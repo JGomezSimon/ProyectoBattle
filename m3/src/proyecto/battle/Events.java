@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Events {
 
-    public void importDB() throws SQLException, ClassNotFoundException {
+    public static void importDB() throws SQLException, ClassNotFoundException {
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/battle", "", "");
         Class.forName("com.mysql.jdbc.Driver");
         connection.createSQLXML();
