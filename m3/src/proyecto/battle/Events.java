@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class Events {
 
     public static void importDB() throws SQLException, ClassNotFoundException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/battle", "", "");
-        Class.forName("com.mysql.jdbc.Driver");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/battle?serverTimezone=UTC", "root", "root");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         connection.createSQLXML();
     }
 }
