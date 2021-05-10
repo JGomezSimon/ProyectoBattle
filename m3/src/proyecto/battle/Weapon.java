@@ -1,5 +1,8 @@
 package proyecto.battle;
 
 public class Weapon {
-    int speed, strength;
+    public Weapon(Warrior warrior, int speed, int strength){
+        warrior.setSpeed(warrior.strength + strength);
+        warrior.setStrength(warrior.speed + speed);
+    }
 }
