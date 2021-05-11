@@ -6,14 +6,14 @@ CREATE DATABASE `battle`;
 USE `battle`;
 
 CREATE TABLE weapons(
-	weapon_id int AUTO_INCREMENT primary key,
+    weapon_id int AUTO_INCREMENT primary key,
     weapon_name varchar(255),
     weapon_image_path varchar(255),
     weapon_strength_boost int,
     weapon_speed_boost int,
-    dwarf_use boolean,
-    elf_use boolean,
-    human_use boolean
+    dwarf_use int,
+    elf_use int,
+    human_use int
 );
 
 CREATE TABLE races(
@@ -67,15 +67,15 @@ CREATE TABLE battles(
 );
 
 insert into weapons(weapon_id,weapon_name,weapon_image_path,weapon_strength_boost,weapon_speed_boost,dwarf_use,elf_use,human_use) values 
-(1,'Dagger','ejemplo.jpg',0,3,false,true,true),
-(2,'Sword','ejemplo.jpg',1,1,true,true,true),
-(3,'Axe','ejemplo.jpg',3,0,true,false,true),
-(4,'Twin Swords','ejemplo.jpg',2,2,false,true,true),
-(5,'Scimitar','ejemplo.jpg',1,2,false,true,true),
-(6,'Bow','ejemplo.jpg',1,5,false,true,false),
-(7,'Katana','ejemplo.jpg',2,3,false,false,true),
-(8,'Knife','ejemplo.jpg',0,4,true,true,true),
-(9,'Two-Handed Axe','ejemplo.jpg',5,0,true,false,false);
+(1,'Dagger','ejemplo.jpg',0,3,0,2,3),
+(2,'Sword','ejemplo.jpg',1,1,1,2,3),
+(3,'Axe','ejemplo.jpg',3,0,1,0,3),
+(4,'Twin Swords','ejemplo.jpg',2,2,0,2,3),
+(5,'Scimitar','ejemplo.jpg',1,2,0,2,3),
+(6,'Bow','ejemplo.jpg',1,5,0,2,0),
+(7,'Katana','ejemplo.jpg',2,3,0,0,3),
+(8,'Knife','ejemplo.jpg',0,4,1,2,3),
+(9,'Two-Handed Axe','ejemplo.jpg',5,0,1,0,0);
 
 insert into races(race_id, race_name,health_points,strength,defense,agility,speed) values 
 (1,'Dwarf',60,6,4,5,3),
@@ -92,6 +92,5 @@ insert into warriors(warrior_id,warrior_name,warrior_image_path,race_id) values
 (7,'Maol-Chaluim Maoileanach','ejemplo.jpg',3),
 (8,'Gillìosa Fòlais','ejemplo.jpg',3),
 (9,'Seumas Forsàidh','ejemplo.jpg',3)
-
 
 

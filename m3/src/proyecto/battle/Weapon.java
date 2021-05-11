@@ -1,13 +1,19 @@
 package proyecto.battle;
 
 public class Weapon {
-    String url;
+    String name,url;
     int speed, strength;
 
-    public Weapon(String url, int speed, int strength) {
+    public Weapon(String name, String url, int speed, int strength) {
+        this.name = name;
+        this.url = url;
         this.speed = speed;
         this.strength = strength;
     }
+
+    public String getName() { return name; }
+
+    public void setName(String name) { this.name = name; }
 
     public String getUrl() { return url;}
 

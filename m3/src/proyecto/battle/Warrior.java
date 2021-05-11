@@ -5,11 +5,13 @@ public class Warrior {
     Weapon weapon;
     Race race;
     int id;
+    int race_id;
 
-    public Warrior(String nom, String url, int id) {
+    public Warrior(String nom, String url, int id, int race_id) {
         this.nom = nom;
         this.url = url;
         this.id = id;
+        this.race_id = id;
     }
 
     public String getNom() { return nom; }
@@ -31,4 +33,8 @@ public class Warrior {
     public int getId() { return id; }
 
     public void setId(int id) { this.id = id; }
+
+    public int getRace_id() { return race_id; }
+
+    public void setRace_id(int race_id) { this.race_id = race_id; }
 }

@@ -26,7 +26,7 @@ public class Events {
         rs = stmnt.executeQuery(query);
 
         while (rs.next()) {
-            WeaponContainer.weaponArrayList.add(new Weapon(rs.getString(3),rs.getInt(4), rs.getInt(5)));
+            WeaponContainer.weaponArrayList.add(new Weapon(rs.getString(2),rs.getString(3),rs.getInt(4), rs.getInt(5)));
         }
 
         /*for (Weapon weapon : WeaponContainer.weaponArrayList) {
@@ -43,7 +43,7 @@ public class Events {
         rs = stmnt.executeQuery(query);
 
         while (rs.next()){
-            WarriorContainer.warriorArrayList.add(new Warrior(rs.getString(2),rs.getString(3),rs.getInt(1)));
+            WarriorContainer.warriorArrayList.add(new Warrior(rs.getString(2),rs.getString(3),rs.getInt(1),rs.getInt(1)));
         }
     }
 }
