@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.*;
 
 public class Events {
-
+    //Objective of class is to introduce all elements from the database inside the programm
     public static void importDB() throws SQLException, ClassNotFoundException {
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/battle?serverTimezone=UTC", "root", "root");
         Class.forName("com.mysql.cj.jdbc.Driver");
