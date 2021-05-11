@@ -1,6 +1,7 @@
 package proyecto.battle;
 
 
+import proyecto.battle.containers.RaceContainer;
 import proyecto.battle.containers.WeaponContainer;
 
 import java.sql.*;
@@ -23,15 +24,24 @@ public class Events {
 
         WeaponContainer weaponContainer = new WeaponContainer();
         /*WarriorContainer warriorContainer = new WarriorContainer();*/
-        query = "select weapon_strength_boost, weapon_speed_boost from weapons";
+        query = "select * from weapons";
         rs = stmnt.executeQuery(query);
 
         while (rs.next()) {
-            WeaponContainer.weaponArrayList.add(new Weapon(rs.getInt(1), rs.getInt(2)));
+            WeaponContainer.weaponArrayList.add(new Weapon(rs.getString(3),rs.getInt(4), rs.getInt(5)));
         }
 
         for (Weapon weapon : WeaponContainer.weaponArrayList) {
-            System.out.println(weapon);
+            System.out.println(weapon.getSpeed());
         }
+
+        query = "select * from races";
+        rs = stmnt.executeQuery(query);
+
+        while (rs.next()) {
+            RaceContainer.raceArrayList.add(new Race(rs.getString(1),rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7)));
+        }
+        query = "select * from warriors";
+        rs = stmnt.executeQuery(query);
     }
 }
