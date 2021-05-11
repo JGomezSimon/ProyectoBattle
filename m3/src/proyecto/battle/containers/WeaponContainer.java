@@ -5,13 +5,5 @@ import proyecto.battle.Weapon;
 import java.util.ArrayList;
 
 public class WeaponContainer {
-    public ArrayList<Weapon> weaponArrayList = new ArrayList<>();
-
-    public ArrayList<Weapon> getWeaponArrayList() {
-        return weaponArrayList;
-    }
-
-    public void setWeaponArrayList(ArrayList<Weapon> weaponArrayList) {
-        this.weaponArrayList = weaponArrayList;
-    }
+    public static ArrayList<Weapon> weaponArrayList = new ArrayList<>();
 }

@@ -1,45 +1,24 @@
 package proyecto.battle.gui;
 
-import proyecto.battle.Events;
-import proyecto.battle.Main;
-
+import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-public class MainPanel extends JPanel implements ActionListener {
+public class MainPanel extends JFrame{
+    private JPanel mainPanel;
+    private JButton jugarButton;
+    private JButton escojerPersonajeButton1;
+    private JButton salirButton;
+    private JButton escojerArmaButton;
+    private JLabel imagenLabel;
 
-    public MainPanel() {
-        JButton myButton1 = new JButton("Jugar");
-        JButton myButton2 = new JButton("Escollir personatge");
-        JButton myButton3 = new JButton("Escollir arma");
-        JButton myButton4 = new JButton("Sortir");
-        JButton myButton5 = new JButton("Cargar Base de Datos");
-        Main.tabbedPane.add("Main", this);
-        myButton1.addActionListener(this);
-        myButton2.addActionListener(this);
-        myButton3.addActionListener(this);
-        myButton4.addActionListener(this);
-        myButton5.addActionListener(this);
-        add(myButton1);
-        add(myButton2);
-        add(myButton3);
-        add(myButton4);
-        add(myButton5);
-        // TODO: 5/10/21  
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        if (actionEvent.getActionCommand().equals("Cargar Base de Datos")) {
-            try {
-                Events.importDB();
-            } catch (SQLException | ClassNotFoundException throwables) {
-                throwables.printStackTrace();
-            }
-        }
+    public MainPanel() throws IOException {
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(mainPanel);
+        this.pack();
+        BufferedImage bufferedImage = ImageIO.read(new File("assets/gui/background.png"));
+        imagenLabel.setIcon(new ImageIcon(bufferedImage));
     }
 }
-
