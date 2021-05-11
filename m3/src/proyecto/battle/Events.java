@@ -22,8 +22,6 @@ public class Events {
             System.out.println(" Boost_Fuerza= "+rs.getInt(4)+" Boost_Velocidad= "+ rs.getInt(5));
         }
 
-        WeaponContainer weaponContainer = new WeaponContainer();
-        /*WarriorContainer warriorContainer = new WarriorContainer();*/
         query = "select * from weapons";
         rs = stmnt.executeQuery(query);
 
@@ -43,5 +41,9 @@ public class Events {
         }
         query = "select * from warriors";
         rs = stmnt.executeQuery(query);
+
+        while (rs.next()){
+            WarriorContainer.warriorArrayList.add(new Warrior(rs.getString(2),rs.getString(3),rs.getInt(1)));
+        }
     }
 }
