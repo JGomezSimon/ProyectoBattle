@@ -29,9 +29,9 @@ public class Events {
             WeaponContainer.weaponArrayList.add(new Weapon(rs.getString(3),rs.getInt(4), rs.getInt(5)));
         }
 
-        for (Weapon weapon : WeaponContainer.weaponArrayList) {
+        /*for (Weapon weapon : WeaponContainer.weaponArrayList) {
             System.out.println(weapon.getSpeed());
-        }
+        }*/ //Loop to check if elements have been introduced into the class
 
         query = "select * from races";
         rs = stmnt.executeQuery(query);
