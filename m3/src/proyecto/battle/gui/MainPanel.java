@@ -1,32 +1,35 @@
 package proyecto.battle.gui;
 
-import javax.imageio.ImageIO;
+import proyecto.battle.Main;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class MainPanel extends JFrame{
-    private JPanel mainPanel;
-    private JButton jugarButton;
-    private JButton escogerPersonajeButton;
-    private JButton salirButton;
-    private JButton escogerArmaButton;
-    private JLabel imagenLabel;
+    protected JPanel mainPanel;
+    protected JButton jugarButton;
+    protected JButton escogerPersonajeButton;
+    protected JButton escogerArmaButton;
+    protected JButton salirButton;
 
-    public MainPanel() throws IOException {
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public MainPanel() {
+        super("main.project.battle");
+        this.setPreferredSize(new Dimension(500,300));
         this.setContentPane(mainPanel);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
-        BufferedImage bufferedImage = ImageIO.read(new File("assets/gui/background.png"));
-        imagenLabel.setIcon(new ImageIcon(bufferedImage));
+        this.setLocationRelativeTo(null);
+
+        escogerArmaButton.setEnabled(false);
+
         escogerArmaButton.addActionListener(actionEvent -> {
-            JFrame frame = new WeaponPanel();
             this.setVisible(false);
-            frame.setVisible(true);
+            Main.weaponPanel.setVisible(true);
         });
+        escogerPersonajeButton.addActionListener(actionEvent -> {
+            this.setVisible(false);
+            Main.warriorPanel.setVisible(true);
+        });
+        salirButton.addActionListener(actionEvent -> System.exit(0));
     }
 }

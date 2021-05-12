@@ -13,10 +13,43 @@ public class Warrior {
         this.defense = defense;
         this.agility = agility;
         this.speed = speed;
+        this.id = id;
     }
 
     public int getId() {
         return id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public int getAgility() {
+        return agility;
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 
     public void setNom(String nom) {

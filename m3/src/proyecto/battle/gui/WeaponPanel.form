@@ -5,99 +5,100 @@
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
     <properties>
+      <background color="-1586264"/>
       <visible value="true"/>
     </properties>
     <border type="none"/>
     <children>
-      <component id="af452" class="javax.swing.JButton" binding="imgButton" default-binding="true">
+      <component id="af452" class="javax.swing.JButton" binding="knife">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <enabled value="false"/>
-          <text value="img"/>
+          <text value="+4 velocidad, +0 fuerza"/>
           <visible value="true"/>
         </properties>
       </component>
-      <component id="450fd" class="javax.swing.JButton" binding="imgButton1" default-binding="true">
+      <component id="450fd" class="javax.swing.JButton" binding="dagger">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <enabled value="false"/>
-          <text value="img"/>
+          <text value="+3 velocidad, +0 fuerza"/>
         </properties>
       </component>
-      <component id="39a8b" class="javax.swing.JButton" binding="imgButton2" default-binding="true">
+      <component id="39a8b" class="javax.swing.JButton" binding="axe">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <enabled value="false"/>
-          <text value="img"/>
+          <text value="+0 velocidad, +3 fuerza"/>
         </properties>
       </component>
-      <component id="a8820" class="javax.swing.JButton" binding="imgButton4" default-binding="true">
+      <component id="a8820" class="javax.swing.JButton" binding="sword">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <enabled value="false"/>
-          <text value="img"/>
+          <text value="+1 velocidad, +1 fuerza"/>
         </properties>
       </component>
-      <component id="47630" class="javax.swing.JButton" binding="imgButton3" default-binding="true">
+      <component id="47630" class="javax.swing.JButton" binding="twinSwords">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <enabled value="false"/>
-          <text value="img"/>
+          <text value="+2 velocidad, +2 fuerza"/>
         </properties>
       </component>
-      <component id="c4ad8" class="javax.swing.JButton" binding="imgButton5" default-binding="true">
+      <component id="c4ad8" class="javax.swing.JButton" binding="scimitar">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <enabled value="false"/>
-          <text value="img"/>
+          <text value="+1 velocidad, +2 fuerza"/>
         </properties>
       </component>
-      <component id="17578" class="javax.swing.JButton" binding="imgButton6" default-binding="true">
+      <component id="17578" class="javax.swing.JButton" binding="bow">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <enabled value="false"/>
-          <text value="img"/>
+          <text value="+5 velocidad, +1 fuerza"/>
         </properties>
       </component>
-      <component id="c5ad4" class="javax.swing.JButton" binding="imgButton7" default-binding="true">
+      <component id="c5ad4" class="javax.swing.JButton" binding="katana">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <enabled value="false"/>
-          <text value="img"/>
+          <text value="+3 velocidad, +2 fuerza"/>
         </properties>
       </component>
-      <component id="c8f1b" class="javax.swing.JButton" binding="imgButton8" default-binding="true">
+      <component id="c8f1b" class="javax.swing.JButton" binding="twoHandedAxe">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <enabled value="false"/>
-          <text value="img"/>
+          <text value="+0 velocidad +5 fuerza"/>
         </properties>
       </component>
       <component id="22eb3" class="javax.swing.JButton" binding="salirButton" default-binding="true">
