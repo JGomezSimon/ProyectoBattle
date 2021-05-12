@@ -4,7 +4,6 @@ import proyecto.battle.containers.WarriorContainer;
 import proyecto.battle.containers.WeaponContainer;
 import proyecto.battle.gui.MainPanel;
 import proyecto.battle.gui.WarriorPanel;
-import proyecto.battle.gui.WeaponPanel;
 
 import javax.swing.*;
 import java.io.IOException;

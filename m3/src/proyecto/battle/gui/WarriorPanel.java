@@ -30,32 +30,14 @@ public class WarriorPanel extends MainPanel{
         this.setLocationRelativeTo(null);
 
         guerrero1.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(0).getUrl()))));
-        guerrero1.setBorderPainted(false);
-        guerrero1.setContentAreaFilled(false);
         guerrero2.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(1).getUrl()))));
-        guerrero2.setBorderPainted(false);
-        guerrero2.setContentAreaFilled(false);
         guerrero3.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(2).getUrl()))));
-        guerrero3.setBorderPainted(false);
-        guerrero3.setContentAreaFilled(false);
         guerrero4.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(3).getUrl()))));
-        guerrero4.setBorderPainted(false);
-        guerrero4.setContentAreaFilled(false);
         guerrero5.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(4).getUrl()))));
-        guerrero5.setBorderPainted(false);
-        guerrero5.setContentAreaFilled(false);
         guerrero6.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(5).getUrl()))));
-        guerrero6.setBorderPainted(false);
-        guerrero6.setContentAreaFilled(false);
         guerrero7.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(6).getUrl()))));
-        guerrero7.setBorderPainted(false);
-        guerrero7.setContentAreaFilled(false);
         guerrero8.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(7).getUrl()))));
-        guerrero8.setBorderPainted(false);
-        guerrero8.setContentAreaFilled(false);
         guerrero9.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(8).getUrl()))));
-        guerrero9.setBorderPainted(false);
-        guerrero9.setContentAreaFilled(false);
 
         salirButton.addActionListener(actionEvent -> {
             this.setVisible(false);
@@ -73,8 +55,6 @@ public class WarriorPanel extends MainPanel{
         guerrero9.addActionListener(actionEvent -> finishPanel(8));
     }
     void finishPanel(int id){
-        super.escogerArmaButton.setEnabled(true);
-        super.escogerPersonajeButton.setEnabled(false);
         BattlePanel.chosenWarrior = WarriorContainer.warriorArrayList.get(id);
         try { Main.weaponPanel = new WeaponPanel();
         } catch (IOException e) {e.printStackTrace();}

@@ -16,6 +16,8 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
           <enabled value="false"/>
           <text value="+4 velocidad, +0 fuerza"/>
           <visible value="true"/>
@@ -27,6 +29,8 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
           <enabled value="false"/>
           <text value="+3 velocidad, +0 fuerza"/>
         </properties>
@@ -37,6 +41,8 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
           <enabled value="false"/>
           <text value="+0 velocidad, +3 fuerza"/>
         </properties>
@@ -47,6 +53,8 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
           <enabled value="false"/>
           <text value="+1 velocidad, +1 fuerza"/>
         </properties>
@@ -57,6 +65,8 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
           <enabled value="false"/>
           <text value="+2 velocidad, +2 fuerza"/>
         </properties>
@@ -67,6 +77,8 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
           <enabled value="false"/>
           <text value="+1 velocidad, +2 fuerza"/>
         </properties>
@@ -77,6 +89,8 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
           <enabled value="false"/>
           <text value="+5 velocidad, +1 fuerza"/>
         </properties>
@@ -87,6 +101,8 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
           <enabled value="false"/>
           <text value="+3 velocidad, +2 fuerza"/>
         </properties>
@@ -97,6 +113,8 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
           <enabled value="false"/>
           <text value="+0 velocidad +5 fuerza"/>
         </properties>

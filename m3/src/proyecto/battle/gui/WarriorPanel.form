@@ -13,7 +13,9 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="Button"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="dbe56" class="javax.swing.JButton" binding="guerrero4">
@@ -22,7 +24,9 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="Button"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="2b26" class="javax.swing.JButton" binding="guerrero5">
@@ -31,7 +35,9 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="Button"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="90eee" class="javax.swing.JButton" binding="guerrero6">
@@ -40,7 +46,9 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="Button"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="393e1" class="javax.swing.JButton" binding="guerrero1">
@@ -49,7 +57,10 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="Button"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <focusPainted value="false"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="cf906" class="javax.swing.JButton" binding="guerrero2">
@@ -58,7 +69,9 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="Button"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="f6e21" class="javax.swing.JButton" binding="guerrero7">
@@ -67,7 +80,9 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="Button"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="532af" class="javax.swing.JButton" binding="guerrero8">
@@ -76,7 +91,9 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="Button"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="c20e3" class="javax.swing.JButton" binding="guerrero9">
@@ -85,7 +102,9 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="Button"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="dd832" class="javax.swing.JButton" binding="salirButton">
@@ -94,6 +113,8 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <borderPainted value="true"/>
+          <contentAreaFilled value="true"/>
           <text value="Salir"/>
         </properties>
       </component>
