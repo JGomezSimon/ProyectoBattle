@@ -37,12 +37,7 @@ CREATE TABLE warriors(
 
 CREATE TABLE players(
 	player_id int auto_increment primary key,
-    player_name varchar(255),
-    global_points int,
-    enemies_defeated int,
-    damage_dealt int,
-    damage_recieved int,
-    warrior_id int
+    player_name varchar(255)
 );
 
 CREATE TABLE weapons_available(
@@ -52,6 +47,16 @@ CREATE TABLE weapons_available(
         REFERENCES warriors(warrior_id),
 	CONSTRAINT FK_WAweapon FOREIGN KEY (weapon_id)
         REFERENCES weapons(weapon_id)
+);
+
+CREATE TABLE rankings(
+	player_id int,
+    global_points int,
+    warrior_id int,
+    CONSTRAINT RWarrior_ID FOREIGN KEY (warrior_id)
+        REFERENCES warriors(warrior_id),
+	CONSTRAINT RPlayer_id FOREIGN KEY (RPlayer_id)
+        REFERENCES players(player_id)
 );
 
 CREATE TABLE battles(
@@ -92,5 +97,4 @@ insert into warriors(warrior_id,warrior_name,warrior_image_path,race_id) values
 (7,'Maol-Chaluim Maoileanach','ejemplo.jpg',3),
 (8,'Gillìosa Fòlais','ejemplo.jpg',3),
 (9,'Seumas Forsàidh','ejemplo.jpg',3)
-
 
