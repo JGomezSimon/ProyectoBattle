@@ -45,5 +45,7 @@ public class Events {
         while (rs.next()){
             WarriorContainer.warriorArrayList.add(new Warrior(rs.getString(2),rs.getString(3),rs.getInt(1),rs.getInt(1)));
         }
+
+
     }
 }
