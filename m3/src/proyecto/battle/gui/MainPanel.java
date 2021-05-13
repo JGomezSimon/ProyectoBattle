@@ -66,6 +66,7 @@ public class MainPanel extends JFrame{
         });
         salirButton.addActionListener(actionEvent -> System.exit(0));
         jugarButton.addActionListener(actionEvent -> {
+            jugarButton.setEnabled(false);
             try {
                 Main.battlePanel = new BattlePanel();
             } catch (IOException e) {
@@ -73,6 +74,8 @@ public class MainPanel extends JFrame{
             }
             this.setVisible(false);
             Main.battlePanel.setVisible(true);
+            escogerPersonajeButton.setEnabled(true);
+            confirmarButton.setEnabled(true);
         });
     }
 }

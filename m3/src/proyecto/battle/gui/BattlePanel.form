@@ -7,7 +7,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="8be1f" binding="panel2" layout-manager="GridBagLayout">
+      <grid id="8be1f" layout-manager="GridBagLayout">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -28,7 +28,7 @@
           </component>
           <component id="bff95" class="javax.swing.JLabel" binding="label2B">
             <constraints>
-              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
@@ -41,7 +41,9 @@
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
+              <foreground color="-16518144"/>
               <preferredSize width="219" height="30"/>
+              <stringPainted value="true"/>
             </properties>
           </component>
           <component id="18d17" class="javax.swing.JLabel" binding="photoLabel1B">
@@ -55,7 +57,7 @@
           </component>
           <component id="3f134" class="javax.swing.JLabel" binding="photoLabel2B">
             <constraints>
-              <grid row="2" column="0" row-span="4" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="4" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
@@ -64,7 +66,7 @@
           </component>
           <component id="55a46" class="javax.swing.JLabel" binding="label3B">
             <constraints>
-              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
@@ -73,7 +75,7 @@
           </component>
           <component id="693f1" class="javax.swing.JLabel" binding="label4B">
             <constraints>
-              <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
@@ -85,28 +87,41 @@
               <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <foreground color="-6476004"/>
+              <indeterminate value="false"/>
+              <stringPainted value="true"/>
+            </properties>
           </component>
           <component id="866e8" class="javax.swing.JProgressBar" binding="progressBar2B">
             <constraints>
               <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <foreground color="-8380803"/>
+              <stringPainted value="true"/>
+            </properties>
           </component>
           <component id="b9550" class="javax.swing.JProgressBar" binding="progressBar3B">
             <constraints>
               <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <foreground color="-5258988"/>
+              <stringPainted value="true"/>
+            </properties>
           </component>
           <component id="331ac" class="javax.swing.JProgressBar" binding="progressBar4B">
             <constraints>
               <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <foreground color="-14538880"/>
+              <stringPainted value="true"/>
+            </properties>
           </component>
         </children>
       </grid>
@@ -120,7 +135,7 @@
         <children>
           <component id="b3ab4" class="javax.swing.JLabel" binding="label1A">
             <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
@@ -142,8 +157,10 @@
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
+              <foreground color="-16518144"/>
               <minimumSize width="10" height="40"/>
               <preferredSize width="219" height="30"/>
+              <stringPainted value="true"/>
             </properties>
           </component>
           <component id="f3838" class="javax.swing.JLabel" binding="photoLabel1A">
@@ -187,28 +204,40 @@
               <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <foreground color="-6476004"/>
+              <stringPainted value="true"/>
+            </properties>
           </component>
           <component id="5505e" class="javax.swing.JProgressBar" binding="progressBar2A">
             <constraints>
               <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <foreground color="-8380803"/>
+              <stringPainted value="true"/>
+            </properties>
           </component>
           <component id="6c3dc" class="javax.swing.JProgressBar" binding="progressBar3A">
             <constraints>
               <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <foreground color="-5258988"/>
+              <stringPainted value="true"/>
+            </properties>
           </component>
           <component id="712ee" class="javax.swing.JProgressBar" binding="progressBar4A">
             <constraints>
               <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <foreground color="-14538880"/>
+              <stringPainted value="true"/>
+            </properties>
           </component>
         </children>
       </grid>

@@ -23,21 +23,21 @@ public class WarriorPanel extends MainPanel{
     private JButton salirButton;
 
     public WarriorPanel() throws IOException {
-        this.setPreferredSize(new Dimension(400,950));
+        this.setPreferredSize(new Dimension(400,700));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(warriorPanel);
         this.pack();
         this.setLocationRelativeTo(null);
 
-        guerrero1.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(0).getUrl()))));
-        guerrero2.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(1).getUrl()))));
-        guerrero3.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(2).getUrl()))));
-        guerrero4.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(3).getUrl()))));
-        guerrero5.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(4).getUrl()))));
-        guerrero6.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(5).getUrl()))));
-        guerrero7.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(6).getUrl()))));
-        guerrero8.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(7).getUrl()))));
-        guerrero9.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(8).getUrl()))));
+        guerrero1.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(0).getUrl())).getScaledInstance(150, 115, Image.SCALE_SMOOTH)));
+        guerrero2.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(1).getUrl())).getScaledInstance(150, 115, Image.SCALE_SMOOTH)));
+        guerrero3.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(2).getUrl())).getScaledInstance(150, 115, Image.SCALE_SMOOTH)));
+        guerrero4.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(3).getUrl())).getScaledInstance(150, 115, Image.SCALE_SMOOTH)));
+        guerrero5.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(4).getUrl())).getScaledInstance(150, 115, Image.SCALE_SMOOTH)));
+        guerrero6.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(5).getUrl())).getScaledInstance(150, 115, Image.SCALE_SMOOTH)));
+        guerrero7.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(6).getUrl())).getScaledInstance(150, 115, Image.SCALE_SMOOTH)));
+        guerrero8.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(7).getUrl())).getScaledInstance(150, 115, Image.SCALE_SMOOTH)));
+        guerrero9.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(8).getUrl())).getScaledInstance(150, 115, Image.SCALE_SMOOTH)));
 
         salirButton.addActionListener(actionEvent -> {
             this.setVisible(false);
