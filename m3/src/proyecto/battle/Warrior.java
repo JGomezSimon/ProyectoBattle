@@ -67,4 +67,24 @@ public class Warrior {
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public void setAgility(int agility) {
+        this.agility = agility;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

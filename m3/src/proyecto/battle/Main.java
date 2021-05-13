@@ -2,6 +2,7 @@ package proyecto.battle;
 
 import proyecto.battle.containers.WarriorContainer;
 import proyecto.battle.containers.WeaponContainer;
+import proyecto.battle.gui.BattlePanel;
 import proyecto.battle.gui.MainPanel;
 import proyecto.battle.gui.WarriorPanel;
 
@@ -13,6 +14,7 @@ public class Main {
     public static JFrame frame;
     public static JFrame weaponPanel;
     public static JFrame warriorPanel;
+    public static JFrame battlePanel;
     public static void main(String[] args) throws IOException {
         // Testing // ADD to container all warriors
         WarriorContainer.warriorArrayList = new ArrayList<>();

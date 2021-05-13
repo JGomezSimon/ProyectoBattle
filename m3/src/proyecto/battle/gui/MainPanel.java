@@ -4,6 +4,7 @@ import proyecto.battle.Main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class MainPanel extends JFrame{
     private JPanel mainPanel;
@@ -34,6 +35,7 @@ public class MainPanel extends JFrame{
 
         escogerArmaButton.setEnabled(false);
         jugarButton.setEnabled(false);
+        confirmarButton1.setEnabled(false);
 
         escogerArmaButton.addActionListener(actionEvent -> {
             this.setVisible(false);
@@ -48,6 +50,7 @@ public class MainPanel extends JFrame{
                 escogerArmaButton.setEnabled(true);
                 escogerPersonajeButton.setEnabled(false);
                 confirmarButton.setEnabled(false);
+                confirmarButton1.setEnabled(true);
             } else {
                 jDialog.setVisible(true);
             }
@@ -62,5 +65,14 @@ public class MainPanel extends JFrame{
             }
         });
         salirButton.addActionListener(actionEvent -> System.exit(0));
+        jugarButton.addActionListener(actionEvent -> {
+            try {
+                Main.battlePanel = new BattlePanel();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            this.setVisible(false);
+            Main.battlePanel.setVisible(true);
+        });
     }
 }
