@@ -5,127 +5,71 @@
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
     <properties>
-      <background color="-1586264"/>
       <visible value="true"/>
     </properties>
     <border type="none"/>
     <children>
-      <component id="af452" class="javax.swing.JButton" binding="knife">
+      <component id="1dd9f" class="javax.swing.JProgressBar" binding="progressBar1">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <borderPainted value="false"/>
-          <contentAreaFilled value="false"/>
-          <enabled value="false"/>
-          <text value="+4 velocidad, +0 fuerza"/>
-          <visible value="true"/>
+          <foreground color="-6476004"/>
+          <stringPainted value="true"/>
         </properties>
       </component>
-      <component id="450fd" class="javax.swing.JButton" binding="dagger">
+      <component id="97f10" class="javax.swing.JProgressBar" binding="progressBar2">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <borderPainted value="false"/>
-          <contentAreaFilled value="false"/>
-          <enabled value="false"/>
-          <text value="+3 velocidad, +0 fuerza"/>
+          <foreground color="-5258988"/>
+          <stringPainted value="true"/>
         </properties>
       </component>
-      <component id="39a8b" class="javax.swing.JButton" binding="axe">
+      <component id="77b70" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="3" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
-        <properties>
-          <borderPainted value="false"/>
-          <contentAreaFilled value="false"/>
-          <enabled value="false"/>
-          <text value="+0 velocidad, +3 fuerza"/>
-        </properties>
+        <properties/>
       </component>
-      <component id="a8820" class="javax.swing.JButton" binding="sword">
+      <component id="d68f6" class="javax.swing.JLabel" binding="imageLabel">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="3" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <borderPainted value="false"/>
-          <contentAreaFilled value="false"/>
-          <enabled value="false"/>
-          <text value="+1 velocidad, +1 fuerza"/>
-        </properties>
-      </component>
-      <component id="47630" class="javax.swing.JButton" binding="twinSwords">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <borderPainted value="false"/>
-          <contentAreaFilled value="false"/>
-          <enabled value="false"/>
-          <text value="+2 velocidad, +2 fuerza"/>
-        </properties>
-      </component>
-      <component id="c4ad8" class="javax.swing.JButton" binding="scimitar">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <borderPainted value="false"/>
-          <contentAreaFilled value="false"/>
-          <enabled value="false"/>
-          <text value="+1 velocidad, +2 fuerza"/>
-        </properties>
-      </component>
-      <component id="17578" class="javax.swing.JButton" binding="bow">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <borderPainted value="false"/>
-          <contentAreaFilled value="false"/>
-          <enabled value="false"/>
-          <text value="+5 velocidad, +1 fuerza"/>
-        </properties>
-      </component>
-      <component id="c5ad4" class="javax.swing.JButton" binding="katana">
-        <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <borderPainted value="false"/>
-          <contentAreaFilled value="false"/>
-          <enabled value="false"/>
-          <text value="+3 velocidad, +2 fuerza"/>
-        </properties>
-      </component>
-      <component id="c8f1b" class="javax.swing.JButton" binding="twoHandedAxe">
-        <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <borderPainted value="false"/>
-          <contentAreaFilled value="false"/>
-          <enabled value="false"/>
-          <text value="+0 velocidad +5 fuerza"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="22eb3" class="javax.swing.JButton" binding="salirButton" default-binding="true">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="Salir"/>
+          <text value="Confirm"/>
+        </properties>
+      </component>
+      <component id="9e042" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Strength"/>
+        </properties>
+      </component>
+      <component id="bfbfe" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Speed"/>
         </properties>
       </component>
     </children>

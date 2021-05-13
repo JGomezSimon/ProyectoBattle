@@ -11,8 +11,4 @@ public class Events {
         Class.forName("com.mysql.cj.jdbc.Driver");
         // TODO: 5/10/21
     }
-    public static void setWeapon(Weapon weapon, Warrior warrior){
-        warrior.setSpeed(warrior.getStrength() + weapon.getStrength());
-        warrior.setStrength(warrior.getSpeed() + weapon.getSpeed());
-    }
 }

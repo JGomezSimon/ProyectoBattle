@@ -1,36 +1,30 @@
 package proyecto.battle;
 
 public class Weapon {
-    String url;
+    String url, name;
     int speed, strength;
 
-    public Weapon(int speed, int strength, String url) {
+    public Weapon(int strength, int speed, String url, String name) {
         this.speed = speed;
         this.strength = strength;
         this.url = url;
+        this.name = name;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public String getName() {
+        return name;
     }
 
     public int getSpeed() {
         return speed;
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
     public int getStrength() {
         return strength;
-    }
-
-    public void setStrength(int strength) {
-        this.strength = strength;
     }
 
     public String getUrl() {
         return url;
     }
+
 }

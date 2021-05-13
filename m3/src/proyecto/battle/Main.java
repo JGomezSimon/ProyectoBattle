@@ -28,15 +28,15 @@ public class Main {
         WarriorContainer.warriorArrayList.add(new Warrior("Seumas Forsàidh", "assets/warriors/seumas.jpg", 40, 4, 2, 7, 7, 2));
         // Testing // ADD to container all weapons
         WeaponContainer.weaponArrayList = new ArrayList<>();
-        WeaponContainer.weaponArrayList.add(new Weapon(3,0, "assets/weapons/dagger.jpg")); // Dagger
-        WeaponContainer.weaponArrayList.add(new Weapon( 1,1, "assets/weapons/sword.jpg")); // Sword
-        WeaponContainer.weaponArrayList.add(new Weapon( 3,0, "assets/weapons/axe.png")); // Axe
-        WeaponContainer.weaponArrayList.add(new Weapon( 2,2, "assets/weapons/twinSwords.jpg")); // TwinSwords
-        WeaponContainer.weaponArrayList.add(new Weapon( 1,2, "assets/weapons/scimitar.jpg")); // Scimitar
-        WeaponContainer.weaponArrayList.add(new Weapon( 1,5, "assets/weapons/bow.jpg")); // Bow
-        WeaponContainer.weaponArrayList.add(new Weapon( 2,3, "assets/weapons/katana.jpg")); // Katana
-        WeaponContainer.weaponArrayList.add(new Weapon( 0,4, "assets/weapons/knife.jpg")); // Knife
-        WeaponContainer.weaponArrayList.add(new Weapon( 5,0, "assets/weapons/twoHandedAxe.jpg")); // TwoHandedAxe
+        WeaponContainer.weaponArrayList.add(new Weapon(3, 0, "assets/weapons/dagger.jpg", "Dagger")); // Dagger
+        WeaponContainer.weaponArrayList.add(new Weapon(1, 1, "assets/weapons/sword.jpg", "Sword")); // Sword
+        WeaponContainer.weaponArrayList.add(new Weapon(3, 0, "assets/weapons/axe.png", "Axe")); // Axe
+        WeaponContainer.weaponArrayList.add(new Weapon(2, 2, "assets/weapons/twinSwords.jpg", "TwinSwords")); // TwinSwords
+        WeaponContainer.weaponArrayList.add(new Weapon(1, 2, "assets/weapons/scimitar.jpg", "Scimitar")); // Scimitar
+        WeaponContainer.weaponArrayList.add(new Weapon(1, 5, "assets/weapons/bow.jpg", "Bow")); // Bow
+        WeaponContainer.weaponArrayList.add(new Weapon(2, 3, "assets/weapons/katana.jpg", "Katana")); // Katana
+        WeaponContainer.weaponArrayList.add(new Weapon(0, 4, "assets/weapons/knife.jpg", "Knife")); // Knife
+        WeaponContainer.weaponArrayList.add(new Weapon(5, 0, "assets/weapons/twoHandedAxe.jpg", "TwoHandedAxe")); // TwoHandedAxe
         // Initialize All Panels
         frame = new MainPanel();
         frame.setVisible(true);

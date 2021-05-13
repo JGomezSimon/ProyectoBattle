@@ -50,7 +50,7 @@ public class BattlePanel extends MainPanel{
     Warrior cpu;
 
     public BattlePanel() throws IOException {
-        this.setPreferredSize(new Dimension(620,490));
+        this.setPreferredSize(new Dimension(620, 490));
         this.setContentPane(mainPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
@@ -60,16 +60,16 @@ public class BattlePanel extends MainPanel{
         Warrior atacante;
         Warrior defensor;
 
-        JButton button1 = new JButton ("Volver Menu");
-        JButton button2 = new JButton ("Volver a Jugar");
+        JButton button1 = new JButton("Return to Menu");
+        JButton button2 = new JButton("Play again");
         jDialog = new JDialog(this, "", true);
-        jDialog.add(new JLabel ());
+        jDialog.add(new JLabel());
         jDialog.setLocationRelativeTo(null);
         jDialog.setLayout(new FlowLayout());
-        jDialog.setSize(250,100);
+        jDialog.setSize(250, 100);
         jDialog.add(button1);
         jDialog.add(button2);
-        button1.addActionListener (e -> {
+        button1.addActionListener(e -> {
             jDialog.setVisible(false);
             this.dispose();
             this.setVisible(false);
@@ -137,9 +137,6 @@ public class BattlePanel extends MainPanel{
         photoLabel2A.setIcon(new ImageIcon(ImageIO.read(new File(cpuWeapon.getUrl())).getScaledInstance(75, 75, Image.SCALE_SMOOTH)));
         photoLabel2B.setIcon(new ImageIcon(ImageIO.read(new File(chosenWeapon.getUrl())).getScaledInstance(75, 75, Image.SCALE_SMOOTH)));
 
-        if (chosenWarrior == null){
-            System.out.println("le cagao");
-        }
         if (chosenWarrior.getSpeed() > cpu.getSpeed()){
             atacante = chosenWarrior;
             defensor = cpu;
@@ -202,20 +199,20 @@ public class BattlePanel extends MainPanel{
             } else {
                 int attack = (atacante.getStrength() + chosenWeapon.getStrength()) - defensor.getDefense();
                 if (random.nextInt(19)+1 == 1) {
-                    textArea1.append("Crítico!! ");
+                    textArea1.append("Critic!! ");
                     attack = ((atacante.getStrength() + chosenWeapon.getStrength()) - defensor.getDefense()) * 2;
                 }
                 defensor.setLife(defensor.getLife() - (attack));
-                textArea1.append("-"+attack+" de vida a "+defensor.getNom()+"\n");
+                textArea1.append("-" + attack + " of life to " + defensor.getName() + "\n");
             }
         } else {
             textArea1.append("Attack failed\n");
         }
         if (defensor.getLife() <= 0) {
             if (defensor == chosenWarrior)
-                jDialog.setTitle("Has Ganado!! ;D");
+                jDialog.setTitle("You have won!! ;D");
             else
-                jDialog.setTitle("Has Perdido.. :(");
+                jDialog.setTitle("You have lost.. :(");
             return false;
         }
         return true;

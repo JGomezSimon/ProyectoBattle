@@ -14,6 +14,7 @@ public class MainPanel extends JFrame{
     private JButton salirButton;
     private JButton confirmarButton;
     private JButton confirmarButton1;
+    private JButton resetButton;
     private final JDialog jDialog;
 
     public MainPanel() {
@@ -24,7 +25,7 @@ public class MainPanel extends JFrame{
         this.pack();
         this.setLocationRelativeTo(null);
 
-        JButton button = new JButton ("OK");
+        JButton button = new JButton("Ok");
         jDialog = new JDialog(this, "", true);
         jDialog.add(new JLabel ("You can't confirm before choosing"));
         jDialog.setLocationRelativeTo(null);
@@ -76,6 +77,13 @@ public class MainPanel extends JFrame{
             Main.battlePanel.setVisible(true);
             escogerPersonajeButton.setEnabled(true);
             confirmarButton.setEnabled(true);
+        });
+        resetButton.addActionListener(actionEvent -> {
+            escogerPersonajeButton.setEnabled(true);
+            escogerArmaButton.setEnabled(false);
+            confirmarButton.setEnabled(true);
+            confirmarButton1.setEnabled(false);
+
         });
     }
 }

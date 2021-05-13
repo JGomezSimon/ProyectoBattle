@@ -1,12 +1,12 @@
 package proyecto.battle;
 
 public class Warrior {
-    String nom, url;
+    String name, url;
     Weapon weapon;
     int life, strength, defense, agility, speed, id;
 
     public Warrior(String nom, String url, int life, int strength, int defense, int agility, int speed, int id) {
-        this.nom = nom;
+        this.name = nom;
         this.url = url;
         this.life = life;
         this.strength = strength;
@@ -20,8 +20,8 @@ public class Warrior {
         return id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
     public String getUrl() {
@@ -52,39 +52,8 @@ public class Warrior {
         return speed;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     public void setLife(int life) {
         this.life = life;
     }
 
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
-
-    public void setAgility(int agility) {
-        this.agility = agility;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }
