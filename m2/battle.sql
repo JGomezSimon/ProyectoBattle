@@ -11,9 +11,7 @@ CREATE TABLE weapons(
     weapon_image_path varchar(255),
     weapon_strength_boost int,
     weapon_speed_boost int,
-    dwarf_use int,
-    elf_use int,
-    human_use int
+    weapon_points int
 );
 
 CREATE TABLE warriors(
@@ -25,7 +23,8 @@ CREATE TABLE warriors(
     strength int,
     defense int,
     agility int,
-    speed int
+    speed int,
+    race_points int
 );
 
 CREATE TABLE players(
@@ -64,25 +63,25 @@ CREATE TABLE battles(
     battle_points int
 );
 
-insert into weapons(weapon_id,weapon_name,weapon_image_path,weapon_strength_boost,weapon_speed_boost,dwarf_use,elf_use,human_use) values 
-(1,'Dagger','ejemplo.jpg',0,3,0,2,3),
-(2,'Sword','ejemplo.jpg',1,1,1,2,3),
-(3,'Axe','ejemplo.jpg',3,0,1,0,3),
-(4,'Twin Swords','ejemplo.jpg',2,2,0,2,3),
-(5,'Scimitar','ejemplo.jpg',1,2,0,2,3),
-(6,'Bow','ejemplo.jpg',1,5,0,2,0),
-(7,'Katana','ejemplo.jpg',2,3,0,0,3),
-(8,'Knife','ejemplo.jpg',0,4,1,2,3),
-(9,'Two-Handed Axe','ejemplo.jpg',5,0,1,0,0);
+insert into weapons(weapon_id,weapon_name,weapon_image_path,weapon_strength_boost,weapon_speed_boost,weapon_points) values 
+(1,'Dagger','ejemplo.jpg',0,3,10),
+(2,'Sword','ejemplo.jpg',1,110),
+(3,'Axe','ejemplo.jpg',3,0,10),
+(4,'Twin Swords','ejemplo.jpg',2,2,14),
+(5,'Scimitar','ejemplo.jpg',1,2,14),
+(6,'Bow','ejemplo.jpg',1,5,15),
+(7,'Katana','ejemplo.jpg',2,3,18),
+(8,'Knife','ejemplo.jpg',0,4,12),
+(9,'Two-Handed Axe','ejemplo.jpg',5,0,20);
 
-insert into warriors(warrior_id,warrior_name,warrior_image_path,race_id) values
-(1,'Nedraec Forgeshaper','ejemplo.jpg',1,60,6,4,5,3),
-(2,'Safomli Platebreaker','ejemplo.jpg',1,60,6,4,5,3),
-(3,'Khekroc Heavyshoulder','ejemplo.jpg',1,60,6,4,5,3),
-(4,'Edwaradrin Ohmswis','ejemplo.jpg',2,40,4,2,7,7),
-(5,'Legomoreno','ejemplo.jpg',2,40,4,2,7,7),
-(6,'Rogerolas Elfbrooks','ejemplo.jpg',2,40,4,2,7,7),
-(7,'Maol-Chaluim Maoileanach','ejemplo.jpg',3,50,5,4,6,5),
-(8,'Gillìosa Fòlais','ejemplo.jpg',3,50,5,4,6,5),
-(9,'Seumas Forsàidh','ejemplo.jpg',3,50,5,4,6,5)
+insert into warriors(warrior_id,warrior_name,warrior_image_path,race_id,strength,defense,agility,speed) values
+(1,'Nedraec Forgeshaper','ejemplo.jpg',1,60,6,4,5,3,21),
+(2,'Safomli Platebreaker','ejemplo.jpg',1,60,6,4,5,3,21),
+(3,'Khekroc Heavyshoulder','ejemplo.jpg',1,60,6,4,5,3,21),
+(4,'Edwaradrin Ohmswis','ejemplo.jpg',2,40,4,2,7,7,19),
+(5,'Legomoreno','ejemplo.jpg',2,40,4,2,7,7,19),
+(6,'Rogerolas Elfbrooks','ejemplo.jpg',2,40,4,2,7,7,19),
+(7,'Maol-Chaluim Maoileanach','ejemplo.jpg',3,50,5,4,6,20),
+(8,'Gillìosa Fòlais','ejemplo.jpg',3,50,5,4,6,5,20),
+(9,'Seumas Forsàidh','ejemplo.jpg',3,50,5,4,6,5,20)
 
