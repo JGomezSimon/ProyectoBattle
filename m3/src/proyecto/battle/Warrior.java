@@ -3,9 +3,9 @@ package proyecto.battle;
 public class Warrior {
     String name, url;
     Weapon weapon;
-    int life, strength, defense, agility, speed, id;
+    int life, strength, defense, agility, speed, race_id, points;
 
-    public Warrior(String nom, String url, int life, int strength, int defense, int agility, int speed, int id) {
+    public Warrior(String nom, String url, int life, int strength, int defense, int agility, int speed, int id, int points) {
         this.name = nom;
         this.url = url;
         this.life = life;
@@ -13,11 +13,16 @@ public class Warrior {
         this.defense = defense;
         this.agility = agility;
         this.speed = speed;
-        this.id = id;
+        this.race_id = id;
+        this.points = points;
     }
 
-    public int getId() {
-        return id;
+    public int getPoints() {
+        return points;
+    }
+
+    public int getRace_id() {
+        return race_id;
     }
 
     public String getName() {

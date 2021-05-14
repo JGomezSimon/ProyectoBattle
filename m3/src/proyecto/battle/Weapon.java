@@ -2,13 +2,18 @@ package proyecto.battle;
 
 public class Weapon {
     String url, name;
-    int speed, strength;
+    int speed, strength, points;
 
-    public Weapon(int strength, int speed, String url, String name) {
+    public Weapon(int strength, int speed, String url, String name, int points) {
         this.speed = speed;
         this.strength = strength;
         this.url = url;
         this.name = name;
+        this.points = points;
+    }
+
+    public int getPoints() {
+        return points;
     }
 
     public String getName() {

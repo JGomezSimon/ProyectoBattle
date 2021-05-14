@@ -79,6 +79,16 @@ public class MainPanel extends JFrame{
             confirmarButton.setEnabled(true);
         });
         resetButton.addActionListener(actionEvent -> {
+            try {
+                Main.weaponPanel.dispose();
+            } catch (NullPointerException ignored) {
+            }
+            Main.warriorPanel.dispose();
+            try {
+                Main.warriorPanel = new WarriorPanel();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             escogerPersonajeButton.setEnabled(true);
             escogerArmaButton.setEnabled(false);
             confirmarButton.setEnabled(true);

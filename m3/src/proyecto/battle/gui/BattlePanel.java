@@ -91,7 +91,7 @@ public class BattlePanel extends MainPanel{
             }
         });
 
-        int random9 = random.nextInt(9);
+        int random9 = random.nextInt(8);
         if (WarriorContainer.warriorArrayList.get(random9) == chosenWarrior) random9 = random9 - 1;
         cpu = WarriorContainer.warriorArrayList.get(random9);
         Weapon cpuWeapon = WeaponContainer.weaponArrayList.get(random9);
@@ -192,28 +192,39 @@ public class BattlePanel extends MainPanel{
         clearConsoleButton.addActionListener(actionEvent -> textArea1.setText(null));
 
     }
-    boolean battle(Warrior defensor, Warrior atacante, Random random){
-        if (random.nextInt(99)+1 > defensor.getAgility()*10){
-            if (random.nextInt(49)+1 < defensor.getAgility()){
-                textArea1.append("Attack evaded\n");
-            } else {
-                int attack = (atacante.getStrength() + chosenWeapon.getStrength()) - defensor.getDefense();
-                if (random.nextInt(19)+1 == 1) {
-                    textArea1.append("Critic!! ");
-                    attack = ((atacante.getStrength() + chosenWeapon.getStrength()) - defensor.getDefense()) * 2;
+
+    boolean battle(Warrior defender, Warrior attacker, Random random) {
+        boolean salir = true;
+        while (salir) {
+            if (random.nextInt(99) + 1 > defender.getAgility() * 10) {
+                if (random.nextInt(49) + 1 < defender.getAgility()) {
+                    textArea1.append("Attack evaded\n");
+                } else {
+                    int attack = (attacker.getStrength() + chosenWeapon.getStrength()) - defender.getDefense();
+                    if (random.nextInt(19) + 1 == 1) {
+                        textArea1.append("Critic!! ");
+                        attack = (attacker.getStrength() + chosenWeapon.getStrength()) * 2 - defender.getDefense();
+                    }
+                    defender.setLife(defender.getLife() - (attack));
+                    textArea1.append("-" + attack + " of life to " + defender.getName() + "\n");
                 }
-                defensor.setLife(defensor.getLife() - (attack));
-                textArea1.append("-" + attack + " of life to " + defensor.getName() + "\n");
+            } else {
+                textArea1.append("Attack failed\n");
             }
-        } else {
-            textArea1.append("Attack failed\n");
-        }
-        if (defensor.getLife() <= 0) {
-            if (defensor == chosenWarrior)
-                jDialog.setTitle("You have won!! ;D");
-            else
-                jDialog.setTitle("You have lost.. :(");
-            return false;
+            if (defender.getLife() <= 0) {
+                if (defender == chosenWarrior)
+                    jDialog.setTitle("You have won!! ;D");
+                else
+                    jDialog.setTitle("You have lost.. :(");
+                return false;
+            }
+            if (attacker.getSpeed() <= defender.getSpeed()) {
+                salir = false;
+            } else {
+                if (!((attacker.getSpeed() - defender.getSpeed()) * 10 > random.nextInt(99) + 1)) {
+                    salir = false;
+                }
+            }
         }
         return true;
 
