@@ -27,27 +27,27 @@ public class WeaponPanel extends MainPanel {
 
         switch (BattlePanel.chosenWarrior.getRace_id()) {
             case 1: // Enano
-                comboBox1.addItem("Axe");
-                comboBox1.addItem("Knife");
-                comboBox1.addItem("TwinSwords");
-                comboBox1.addItem("TwoHandedAxe");
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(2).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(7).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(3).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(8).getName());
                 break;
             case 2: // Elfo
-                comboBox1.addItem("Knife");
-                comboBox1.addItem("Dagger");
-                comboBox1.addItem("TwinSwords");
-                comboBox1.addItem("Sword");
-                comboBox1.addItem("Scimitar");
-                comboBox1.addItem("Bow");
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(7).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(0).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(3).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(1).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(4).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(5).getName());
                 break;
             case 3: // Humano
-                comboBox1.addItem("Knife");
-                comboBox1.addItem("Dagger");
-                comboBox1.addItem("Axe");
-                comboBox1.addItem("TwinSwords");
-                comboBox1.addItem("Sword");
-                comboBox1.addItem("Scimitar");
-                comboBox1.addItem("Katana");
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(7).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(0).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(2).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(3).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(1).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(4).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(6).getName());
         }
 
         progressBar1.setMaximum(5);
@@ -71,7 +71,7 @@ public class WeaponPanel extends MainPanel {
 
         salirButton.addActionListener(actionEvent -> {
             this.setVisible(false);
-            Main.frame.setVisible(true);
+            Main.mainPanel.setVisible(true);
             finishPanel(selectedWeapon);
         });
         comboBox1.addActionListener(actionEvent -> {
@@ -95,6 +95,6 @@ public class WeaponPanel extends MainPanel {
     void finishPanel(int id){
         BattlePanel.chosenWeapon = WeaponContainer.weaponArrayList.get(id);
         this.setVisible(false);
-        Main.frame.setVisible(true);
+        Main.mainPanel.setVisible(true);
     }
 }

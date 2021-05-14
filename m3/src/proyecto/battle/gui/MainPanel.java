@@ -15,6 +15,7 @@ public class MainPanel extends JFrame{
     private JButton confirmarButton;
     private JButton confirmarButton1;
     private JButton resetButton;
+    private JButton rankingButton;
     private final JDialog jDialog;
 
     public MainPanel() {
@@ -89,11 +90,15 @@ public class MainPanel extends JFrame{
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            jugarButton.setEnabled(false);
             escogerPersonajeButton.setEnabled(true);
             escogerArmaButton.setEnabled(false);
             confirmarButton.setEnabled(true);
             confirmarButton1.setEnabled(false);
-
+        });
+        rankingButton.addActionListener(actionEvent -> {
+            this.setVisible(false);
+            Main.rankingPanel.setVisible(true);
         });
     }
 }

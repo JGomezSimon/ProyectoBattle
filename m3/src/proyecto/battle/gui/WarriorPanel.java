@@ -61,7 +61,7 @@ public class WarriorPanel extends MainPanel {
 
         salirButton.addActionListener(actionEvent -> {
             this.setVisible(false);
-            Main.frame.setVisible(true);
+            Main.mainPanel.setVisible(true);
             finishPanel(selectedWarrior);
         });
         // photoLabel1.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(0).getUrl())).getScaledInstance(150, 115, Image.SCALE_SMOOTH)));
@@ -93,7 +93,7 @@ public class WarriorPanel extends MainPanel {
         try { Main.weaponPanel = new WeaponPanel();
         } catch (IOException e) {e.printStackTrace();}
         this.setVisible(false);
-        Main.frame.setVisible(true);
+        Main.mainPanel.setVisible(true);
     }
 
 

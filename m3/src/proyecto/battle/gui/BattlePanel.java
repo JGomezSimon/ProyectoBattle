@@ -73,7 +73,7 @@ public class BattlePanel extends MainPanel{
             jDialog.setVisible(false);
             this.dispose();
             this.setVisible(false);
-            Main.frame.setVisible(true);
+            Main.mainPanel.setVisible(true);
         });
         button2.addActionListener (e -> {
             this.dispose();
