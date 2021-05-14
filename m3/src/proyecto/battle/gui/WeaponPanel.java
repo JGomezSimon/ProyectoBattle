@@ -1,7 +1,6 @@
 package proyecto.battle.gui;
 
 import proyecto.battle.Main;
-import proyecto.battle.Weapon;
 import proyecto.battle.containers.WeaponContainer;
 
 import javax.imageio.ImageIO;
@@ -9,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class WeaponPanel extends MainPanel {
     private JPanel weaponPanel;
@@ -26,38 +24,30 @@ public class WeaponPanel extends MainPanel {
         this.setContentPane(weaponPanel);
         this.pack();
         this.setLocationRelativeTo(null);
-        ArrayList<String> weaponsAvailable = new ArrayList<>();
 
         switch (BattlePanel.chosenWarrior.getId()) {
             case 1: // Enano
-                weaponsAvailable.add("Knife");
-                weaponsAvailable.add("Axe");
-                weaponsAvailable.add("TwinSwords");
-                weaponsAvailable.add("TwoHandedAxe");
+                comboBox1.addItem("Axe");
+                comboBox1.addItem("Knife");
+                comboBox1.addItem("TwinSwords");
+                comboBox1.addItem("TwoHandedAxe");
                 break;
             case 2: // Elfo
-                weaponsAvailable.add("Knife");
-                weaponsAvailable.add("Dagger");
-                weaponsAvailable.add("TwinSwords");
-                weaponsAvailable.add("Sword");
-                weaponsAvailable.add("Scimitar");
-                weaponsAvailable.add("Bow");
+                comboBox1.addItem("Knife");
+                comboBox1.addItem("Dagger");
+                comboBox1.addItem("TwinSwords");
+                comboBox1.addItem("Sword");
+                comboBox1.addItem("Scimitar");
+                comboBox1.addItem("Bow");
                 break;
             case 3: // Humano
-                weaponsAvailable.add("Knife");
-                weaponsAvailable.add("Dagger");
-                weaponsAvailable.add("Axe");
-                weaponsAvailable.add("TwinSwords");
-                weaponsAvailable.add("Sword");
-                weaponsAvailable.add("Scimitar");
-                weaponsAvailable.add("Katana");
-        }
-
-        for (Weapon i : WeaponContainer.weaponArrayList) {
-            for (String x : weaponsAvailable) {
-                if (i.getName().equals(x))
-                    comboBox1.addItem(i.getName());
-            }
+                comboBox1.addItem("Knife");
+                comboBox1.addItem("Dagger");
+                comboBox1.addItem("Axe");
+                comboBox1.addItem("TwinSwords");
+                comboBox1.addItem("Sword");
+                comboBox1.addItem("Scimitar");
+                comboBox1.addItem("Katana");
         }
 
         progressBar1.setMaximum(5);
@@ -68,7 +58,6 @@ public class WeaponPanel extends MainPanel {
             if (WeaponContainer.weaponArrayList.get(i).getName().equals(comboBox1.getSelectedItem()))
                 temporalID = i;
         }
-
         progressBar1.setString(String.valueOf(WeaponContainer.weaponArrayList.get(temporalID).getStrength()));
         progressBar2.setString(String.valueOf(WeaponContainer.weaponArrayList.get(temporalID).getSpeed()));
         progressBar1.setValue(WeaponContainer.weaponArrayList.get(temporalID).getStrength());

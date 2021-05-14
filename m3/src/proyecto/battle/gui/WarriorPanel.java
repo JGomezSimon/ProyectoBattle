@@ -36,11 +36,11 @@ public class WarriorPanel extends MainPanel {
 
         for (Warrior i : WarriorContainer.warriorArrayList) comboBox1.addItem(i.getName());
 
-        progressBar1.setMaximum(11);
+        progressBar1.setMaximum(6);
         progressBar2.setMaximum(7);
-        progressBar3.setMaximum(12);
+        progressBar3.setMaximum(7);
         progressBar4.setMaximum(4);
-        progressBar4.setMaximum(60);
+        progressBar5.setMaximum(60);
         selectedWarrior = 0;
         try {
             photoLabel1.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(0).getUrl())).getScaledInstance(310, 215, Image.SCALE_SMOOTH)));
