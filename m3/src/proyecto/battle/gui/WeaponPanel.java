@@ -25,7 +25,7 @@ public class WeaponPanel extends MainPanel {
         this.pack();
         this.setLocationRelativeTo(null);
 
-        switch (BattlePanel.chosenWarrior.getId()) {
+        switch (BattlePanel.chosenWarrior.getRace_id()) {
             case 1: // Enano
                 comboBox1.addItem("Axe");
                 comboBox1.addItem("Knife");
