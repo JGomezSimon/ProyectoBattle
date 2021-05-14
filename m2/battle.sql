@@ -44,11 +44,14 @@ CREATE TABLE weapons_available(
 CREATE TABLE rankings(
 	player_id int,
     global_points int,
+    warrior_id int,
     wins int,
     losses int,
-    win_loss_ratio float(20,10),
+    win_loss_percentage float(20,10),
 	CONSTRAINT RPlayer_id FOREIGN KEY (player_id)
-        REFERENCES players(player_id)
+        REFERENCES players(player_id),
+	CONSTRAINT RWarrior_id FOREIGN KEY (warrior_id)
+		REFERENCES warriors(warrior_id)
 );
 
 CREATE TABLE battles(
@@ -89,7 +92,7 @@ insert into warriors(warrior_id, warrior_name, warrior_image_path, race_id, heal
 
 insert into players(player_id, player_name) values (1,'test');
 
-insert into rankings(player_id, global_points, wins, losses, win_loss_ratio) values (1,100,6,2,66.667)
+insert into rankings(player_id, global_points, warrior_id, wins, losses, win_loss_percentage) values (1,100,7,6,2,66.667)
 
 
 
