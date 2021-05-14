@@ -5,15 +5,15 @@ public class Warrior {
     Weapon weapon;
     int life, strength, defense, agility, speed, race_id, points;
 
-    public Warrior(String nom, String url, int life, int strength, int defense, int agility, int speed, int id, int points) {
-        this.name = nom;
+    public Warrior(String name, String url, int life, int strength, int defense, int agility, int speed, int race_id, int points) {
+        this.name = name;
         this.url = url;
         this.life = life;
         this.strength = strength;
         this.defense = defense;
         this.agility = agility;
         this.speed = speed;
-        this.race_id = id;
+        this.race_id = race_id;
         this.points = points;
     }
 
