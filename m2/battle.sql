@@ -16,23 +16,16 @@ CREATE TABLE weapons(
     human_use int
 );
 
-CREATE TABLE races(
-	race_id int auto_increment primary key,
-    race_name varchar(255),
-	health_points int,
-    strength int,
-    defense int,
-    agility int,
-    speed int
-);
-
 CREATE TABLE warriors(
 	warrior_id int auto_increment primary key,
     warrior_name varchar(255),
     warrior_image_path varchar(255),
     race_id int,
-    CONSTRAINT Wrace_id FOREIGN KEY (race_id)
-		REFERENCES races(race_id)
+    health_points int,
+    strength int,
+    defense int,
+    agility int,
+    speed int
 );
 
 CREATE TABLE players(
@@ -82,19 +75,14 @@ insert into weapons(weapon_id,weapon_name,weapon_image_path,weapon_strength_boos
 (8,'Knife','ejemplo.jpg',0,4,1,2,3),
 (9,'Two-Handed Axe','ejemplo.jpg',5,0,1,0,0);
 
-insert into races(race_id, race_name,health_points,strength,defense,agility,speed) values 
-(1,'Dwarf',60,6,4,5,3),
-(2,'Elf',40,4,2,7,7),
-(3,'Human',50,5,4,6,5);
-
 insert into warriors(warrior_id,warrior_name,warrior_image_path,race_id) values
-(1,'Nedraec Forgeshaper','ejemplo.jpg',1),
-(2,'Safomli Platebreaker','ejemplo.jpg',1),
-(3,'Khekroc Heavyshoulder','ejemplo.jpg',1),
-(4,'Edwaradrin Ohmswis','ejemplo.jpg',2),
-(5,'Legomoreno','ejemplo.jpg',2),
-(6,'Rogerolas Elfbrooks','ejemplo.jpg',2),
-(7,'Maol-Chaluim Maoileanach','ejemplo.jpg',3),
-(8,'Gillìosa Fòlais','ejemplo.jpg',3),
-(9,'Seumas Forsàidh','ejemplo.jpg',3)
+(1,'Nedraec Forgeshaper','ejemplo.jpg',1,60,6,4,5,3),
+(2,'Safomli Platebreaker','ejemplo.jpg',1,60,6,4,5,3),
+(3,'Khekroc Heavyshoulder','ejemplo.jpg',1,60,6,4,5,3),
+(4,'Edwaradrin Ohmswis','ejemplo.jpg',2,40,4,2,7,7),
+(5,'Legomoreno','ejemplo.jpg',2,40,4,2,7,7),
+(6,'Rogerolas Elfbrooks','ejemplo.jpg',2,40,4,2,7,7),
+(7,'Maol-Chaluim Maoileanach','ejemplo.jpg',3,50,5,4,6,5),
+(8,'Gillìosa Fòlais','ejemplo.jpg',3,50,5,4,6,5),
+(9,'Seumas Forsàidh','ejemplo.jpg',3,50,5,4,6,5)
 
