@@ -66,7 +66,7 @@ CREATE TABLE battles(
 insert into weapons(weapon_id,weapon_name,weapon_image_path,weapon_strength_boost,weapon_speed_boost,weapon_points) values 
 (1,'Dagger','assets/weapons/dagger.jpg',0,3,10),
 (2,'Sword','assets/weapons/sword.jpg',1,110),
-(3,'Axe','assets/weapons/axe.jpg',3,0,10),
+(3,'Axe','assets/weapons/axe.png',3,0,10),
 (4,'Twin Swords','assets/weapons/twinSword.jpg',2,2,14),
 (5,'Scimitar','assets/weapons/scimitar.jpg',1,2,14),
 (6,'Bow','assets/weapons/bow.jpg',1,5,15),
