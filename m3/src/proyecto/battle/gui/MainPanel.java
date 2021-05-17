@@ -48,7 +48,7 @@ public class MainPanel extends JFrame{
             Main.warriorPanel.setVisible(true);
         });
         confirmarButton.addActionListener(actionEvent -> {
-            if (BattlePanel.chosenWarrior != null){
+            if (LoginPanel.player.getWarrior() != null) {
                 escogerArmaButton.setEnabled(true);
                 escogerPersonajeButton.setEnabled(false);
                 confirmarButton.setEnabled(false);
@@ -58,7 +58,7 @@ public class MainPanel extends JFrame{
             }
         });
         confirmarButton1.addActionListener(actionEvent -> {
-            if (BattlePanel.chosenWarrior.getWeapon() != null) {
+            if (LoginPanel.player.getWarrior().getWeapon() != null) {
                 escogerArmaButton.setEnabled(false);
                 jugarButton.setEnabled(true);
                 confirmarButton1.setEnabled(false);
@@ -98,6 +98,7 @@ public class MainPanel extends JFrame{
         });
         rankingButton.addActionListener(actionEvent -> {
             this.setVisible(false);
+            Main.rankingPanel = new RankingPanel();
             Main.rankingPanel.setVisible(true);
         });
     }

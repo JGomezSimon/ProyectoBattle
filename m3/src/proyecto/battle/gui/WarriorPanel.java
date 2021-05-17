@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
 
 public class WarriorPanel extends MainPanel {
     private JPanel warriorPanel;
@@ -88,10 +89,14 @@ public class WarriorPanel extends MainPanel {
             }
         });
     }
-    void finishPanel(int id){
-        BattlePanel.chosenWarrior = WarriorContainer.warriorArrayList.get(id);
-        try { Main.weaponPanel = new WeaponPanel();
-        } catch (IOException e) {e.printStackTrace();}
+    void finishPanel(int id) {
+        LoginPanel.player.setWarrior(WarriorContainer.warriorArrayList.get(id));
+        Main.logger.log(Level.INFO, "The player have choose " + WarriorContainer.warriorArrayList.get(id).getName() + " [warrior]");
+        try {
+            Main.weaponPanel = new WeaponPanel();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         this.setVisible(false);
         Main.mainPanel.setVisible(true);
     }
