@@ -71,4 +71,20 @@ public class Events {
         WeaponContainer.weaponArrayList.add(new Weapon(0, 4, "assets/weapons/knife.jpg", "Knife", 12)); // Knife
         WeaponContainer.weaponArrayList.add(new Weapon(5, 0, "assets/weapons/twoHandedAxe.jpg", "TwoHandedAxe", 20)); // TwoHandedAxe
     }
+
+    public static void addPlayer(Player player) throws SQLException, ClassNotFoundException{
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/battle?serverTimezone=UTC", "root", "root");
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        String update = "insert into players(player_id, player_name, passwd, points, wins, losses) values (?,?,?, ?, ?, ?)";
+        PreparedStatement ps = connection.prepareStatement(update);
+
+        ps.setString(2,player.getName());
+        ps.setString(3,player.getPassword());
+        ps.setInt(4,0);
+        ps.setInt(5,0);
+        ps.setInt(6,0);
+        ps.executeUpdate();
+    }
+
 }
