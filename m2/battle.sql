@@ -64,7 +64,7 @@ insert into weapons(weapon_id, weapon_name, weapon_image_path, weapon_strength_b
 (1, 'Dagger', 'assets/weapons/dagger.jpg', 0, 3, 10),
 (2, 'Sword', 'assets/weapons/sword.jpg', 1, 1, 10),
 (3, 'Axe', 'assets/weapons/axe.png', 3, 0, 10),
-(4, 'Twin Swords', 'assets/weapons/twinSword.jpg',2 ,2 ,14),
+(4, 'Twin Swords', 'assets/weapons/twinSwords.jpg',2 ,2 ,14),
 (5, 'Scimitar', 'assets/weapons/scimitar.jpg',1 ,2 , 14),
 (6, 'Bow', 'assets/weapons/bow.jpg', 1, 5, 15),
 (7, 'Katana', 'assets/weapons/katana.jpg', 2, 3, 18),

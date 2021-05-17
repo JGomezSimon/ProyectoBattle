@@ -21,15 +21,9 @@ public class Events {
         ResultSet rs = stmnt.executeQuery(query);
 
         while (rs.next()) {
-            System.out.println(" Boost_Fuerza= " + rs.getInt(4) + " Boost_Velocidad= " + rs.getInt(5));
-        }
-
-        query = "select * from weapons";
-        rs = stmnt.executeQuery(query);
-
-        while (rs.next()) {
             WeaponContainer.weaponArrayList.add(new Weapon(rs.getInt(5), rs.getInt(4), rs.getString(3), rs.getString(2), rs.getInt(6)));
         }
+
 
         // Loop to check if elements have been introduced into the class
         query = "select * from warriors";
@@ -38,6 +32,12 @@ public class Events {
         while (rs.next()) {
             WarriorContainer.warriorArrayList.add(new Warrior(rs.getString(2), rs.getString(3), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(4), rs.getInt(10)));
         }
+
+        for(Warrior w : WarriorContainer.warriorArrayList){
+            System.out.println(w.getUrl());
+        }
+
+
         query = "select * from players";
         rs = stmnt.executeQuery(query);
 
@@ -82,6 +82,7 @@ public class Events {
         ps.setInt(5, 0);
         ps.setInt(6, 0);
         ps.executeUpdate();
+        System.out.println("Pene");
     }
 
     public static void addPlayerNoDB(Player player) {
