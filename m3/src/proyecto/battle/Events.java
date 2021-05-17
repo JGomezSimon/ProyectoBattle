@@ -36,12 +36,18 @@ public class Events {
         while (rs.next()) {
             WarriorContainer.warriorArrayList.add(new Warrior(rs.getString(2), rs.getString(3), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(4), rs.getInt(10)));
         }
+        query = "select * from players";
+        rs = stmnt.executeQuery(query);
+
+        while (rs.next()) {
+            PlayerContainer.playerArrayList.add(new Player(rs.getString(2), rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6)));
+        }
     }
 
     public static void importNoDB() {
         // Testing // ADD to container some players
         PlayerContainer.playerArrayList = new ArrayList<>();
-        PlayerContainer.playerArrayList.add(new Player("PepeD", 400, 7, 2));
+        PlayerContainer.playerArrayList.add(new Player("PepeD", "test", 150,7, 2));
         // Testing // ADD to container all warriors
         WarriorContainer.warriorArrayList = new ArrayList<>();
         WarriorContainer.warriorArrayList.add(new Warrior("Nedraec Forgeshaper", "assets/warriors/nedraec.jpeg", 60, 6, 4, 5, 3, 1, 21));
