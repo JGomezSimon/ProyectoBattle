@@ -13,6 +13,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
+import java.util.logging.Level;
 
 public class BattlePanel extends MainPanel{
     public static Warrior chosenWarrior;
@@ -88,7 +89,13 @@ public class BattlePanel extends MainPanel{
         });
 
         int random9 = random.nextInt(8);
-        if (WarriorContainer.warriorArrayList.get(random9) == chosenWarrior) random9 = random9 - 1;
+        if (WarriorContainer.warriorArrayList.get(random9) == chosenWarrior) {
+            if (random9 == 0)
+                random9 = random9 + 1;
+            else
+                random9 = random9 - 1;
+        }
+
         cpu = WarriorContainer.warriorArrayList.get(random9);
         cpu.setWeapon(WeaponContainer.weaponArrayList.get(random9));
 
@@ -186,7 +193,6 @@ public class BattlePanel extends MainPanel{
             }
         });
         clearConsoleButton.addActionListener(actionEvent -> textArea1.setText(null));
-
     }
 
     boolean battle(Warrior defender, Warrior attacker, Random random) {
@@ -208,10 +214,16 @@ public class BattlePanel extends MainPanel{
                 textArea1.append("Attack failed\n");
             }
             if (defender.getLife() <= 0) {
-                if (defender == chosenWarrior)
+                if (defender == chosenWarrior) {
                     jDialog.setTitle("You have won!! ;D");
-                else
+                    Main.logger.log(Level.INFO, "The player won the game +" + (cpu.getPoints() + cpu.getWeapon().getPoints()));
+                    LoginPanel.player.setPoints((int) (LoginPanel.player.getPoints() + (cpu.getPoints() + cpu.getWeapon().getPoints())));
+                    LoginPanel.player.setWon((int) (LoginPanel.player.getWon() + 1));
+                } else {
                     jDialog.setTitle("You have lost.. :(");
+                    Main.logger.log(Level.INFO, "The player lost the game");
+                    LoginPanel.player.setLost((int) (LoginPanel.player.getLost() + 1));
+                }
                 return false;
             }
             if (attacker.getSpeed() <= defender.getSpeed()) {
