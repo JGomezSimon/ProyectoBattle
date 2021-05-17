@@ -25,14 +25,15 @@ public class RankingPanel extends JFrame {
         String[] columnNames = {"Name", "Points", "Won", "Lost", "%Won"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
         addToRanking(model);
-        JButton button = new JButton("Salir");
-        JTable table = new JTable(model);
-        this.add(button);
 
-        TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(model);
         List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
         sortKeys.add(new RowSorter.SortKey(1, SortOrder.DESCENDING));
         sorter.setSortKeys(sortKeys);
+
+        JButton button = new JButton("Salir");
+        JTable table = new JTable(model);
+        this.add(button);
 
         JScrollPane scrollPane = new JScrollPane(table);
         table.setRowSorter(sorter);

@@ -3,6 +3,7 @@ package proyecto.battle;
 public class Player {
     String name, password;
     float points, won, lost;
+    Warrior warrior;
 
     public Player(String name, String password, float points, float win, float lost) {
         this.name = name;
@@ -10,6 +11,14 @@ public class Player {
         this.won = win;
         this.lost = lost;
         this.password = password;
+    }
+
+    public Warrior getWarrior() {
+        return warrior;
+    }
+
+    public void setWarrior(Warrior warrior) {
+        this.warrior = warrior;
     }
 
     public String getPassword() {
