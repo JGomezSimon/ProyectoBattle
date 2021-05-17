@@ -33,7 +33,10 @@ CREATE TABLE players(
     passwd varchar(255),
     points int,
     wins int,
-    losses int
+    losses int,
+    warrior_id int,
+    CONSTRAINT PFK_WArrior FOREIGN KEY (warrior_id)
+		REFERENCES warriors(warrior_id)
 );
 
 CREATE TABLE weapons_available(
@@ -43,19 +46,6 @@ CREATE TABLE weapons_available(
         REFERENCES warriors(warrior_id),
 	CONSTRAINT FK_WAweapon FOREIGN KEY (weapon_id)
         REFERENCES weapons(weapon_id)
-);
-
-CREATE TABLE rankings(
-	player_id int,
-    global_points int,
-    warrior_id int,
-    wins int,
-    losses int,
-    win_loss_percentage float(20,10),
-	CONSTRAINT RPlayer_id FOREIGN KEY (player_id)
-        REFERENCES players(player_id),
-	CONSTRAINT RWarrior_id FOREIGN KEY (warrior_id)
-		REFERENCES warriors(warrior_id)
 );
 
 CREATE TABLE battles(
@@ -94,9 +84,7 @@ insert into warriors(warrior_id, warrior_name, warrior_image_path, race_id, heal
 (8, 'Gillìosa Fòlais', 'assets/warriors/gilliosa.jpg', 3, 50, 5, 4, 6, 5, 20),
 (9, 'Seumas Forsàidh', 'assets/warriors/seumas.jpg', 3, 50, 5, 4, 6, 5, 20);
 
-insert into players(player_id, player_name) values (1,'test','test', 176, 7, 3);
-
-insert into rankings(player_id, global_points, warrior_id, wins, losses, win_loss_percentage) values (1,100,7,6,2,66.667)
+insert into players(player_id, player_name, passwd, points, wins, losses, warrior_id) values (1,'test','test', 176, 7, 3, 5);
 
 
 
