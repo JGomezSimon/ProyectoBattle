@@ -13,9 +13,9 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
-import java.util.logging.Level;
 
 public class BattlePanel extends MainPanel{
+    public static Warrior chosenWarrior;
     private JPanel mainPanel;
     private JLabel photoLabel1B;
     private JLabel photoLabel2B;
@@ -88,21 +88,15 @@ public class BattlePanel extends MainPanel{
         });
 
         int random9 = random.nextInt(8);
-        if (WarriorContainer.warriorArrayList.get(random9) == LoginPanel.player.getWarrior()) {
-            if (random9 == 0)
-                random9 = random9 + 1;
-            else
-                random9 = random9 - 1;
-        }
-
+        if (WarriorContainer.warriorArrayList.get(random9) == chosenWarrior) random9 = random9 - 1;
         cpu = WarriorContainer.warriorArrayList.get(random9);
         cpu.setWeapon(WeaponContainer.weaponArrayList.get(random9));
 
         int totalLifeCPU = cpu.getLife();
         int totalLifePlayer = cpu.getLife();
 
-        progressBar5A.setMaximum(LoginPanel.player.getWarrior().getLife());
-        progressBar5A.setValue(LoginPanel.player.getWarrior().getLife());
+        progressBar5A.setMaximum(chosenWarrior.getLife());
+        progressBar5A.setValue(chosenWarrior.getLife());
         progressBar5B.setMaximum(cpu.getLife());
         progressBar5B.setValue(cpu.getLife());
 
@@ -110,14 +104,14 @@ public class BattlePanel extends MainPanel{
         progressBar2B.setMaximum(7);
         progressBar3B.setMaximum(12);
         progressBar4B.setMaximum(4);
-        progressBar1B.setValue(LoginPanel.player.getWarrior().getStrength() + LoginPanel.player.getWarrior().getWeapon().getStrength());
-        progressBar1B.setString(String.valueOf(LoginPanel.player.getWarrior().getStrength() + LoginPanel.player.getWarrior().getStrength()));
-        progressBar2B.setValue(LoginPanel.player.getWarrior().getAgility());
-        progressBar2B.setString(String.valueOf(LoginPanel.player.getWarrior().getAgility()));
-        progressBar3B.setValue(LoginPanel.player.getWarrior().getSpeed() + LoginPanel.player.getWarrior().getWeapon().getSpeed());
-        progressBar3B.setString(String.valueOf(LoginPanel.player.getWarrior().getSpeed() + LoginPanel.player.getWarrior().getSpeed()));
-        progressBar4B.setValue(LoginPanel.player.getWarrior().getDefense());
-        progressBar4B.setString(String.valueOf(LoginPanel.player.getWarrior().getDefense()));
+        progressBar1B.setValue(chosenWarrior.getStrength() + chosenWarrior.getWeapon().getStrength());
+        progressBar1B.setString(String.valueOf(chosenWarrior.getStrength() + chosenWarrior.getStrength()));
+        progressBar2B.setValue(chosenWarrior.getAgility());
+        progressBar2B.setString(String.valueOf(chosenWarrior.getAgility()));
+        progressBar3B.setValue(chosenWarrior.getSpeed() + chosenWarrior.getWeapon().getSpeed());
+        progressBar3B.setString(String.valueOf(chosenWarrior.getSpeed() + chosenWarrior.getSpeed()));
+        progressBar4B.setValue(chosenWarrior.getDefense());
+        progressBar4B.setString(String.valueOf(chosenWarrior.getDefense()));
 
         progressBar1A.setMaximum(11);
         progressBar2A.setMaximum(7);
@@ -134,30 +128,31 @@ public class BattlePanel extends MainPanel{
 
         photoLabel1A.setIcon(new ImageIcon(ImageIO.read(new File(cpu.getUrl()))));
         photoLabel1A.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        photoLabel1B.setIcon(new ImageIcon(ImageIO.read(new File(LoginPanel.player.getWarrior().getUrl()))));
+        photoLabel1B.setIcon(new ImageIcon(ImageIO.read(new File(chosenWarrior.getUrl()))));
         photoLabel1B.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         photoLabel2A.setIcon(new ImageIcon(ImageIO.read(new File(cpu.getWeapon().getUrl())).getScaledInstance(75, 75, Image.SCALE_SMOOTH)));
-        photoLabel2B.setIcon(new ImageIcon(ImageIO.read(new File(LoginPanel.player.getWarrior().getWeapon().getUrl())).getScaledInstance(75, 75, Image.SCALE_SMOOTH)));
+        photoLabel2B.setIcon(new ImageIcon(ImageIO.read(new File(chosenWarrior.getWeapon().getUrl())).getScaledInstance(75, 75, Image.SCALE_SMOOTH)));
 
-        if (LoginPanel.player.getWarrior().getSpeed() > cpu.getSpeed()) {
-            atacante = LoginPanel.player.getWarrior();
+        if (chosenWarrior.getSpeed() > cpu.getSpeed()) {
+            atacante = chosenWarrior;
             defensor = cpu;
-        } else if (LoginPanel.player.getWarrior().getSpeed() < cpu.getSpeed()) {
+        } else if (chosenWarrior.getSpeed() < cpu.getSpeed()) {
             atacante = cpu;
-            defensor = LoginPanel.player.getWarrior();
+            defensor = chosenWarrior;
         } else {
-            if (LoginPanel.player.getWarrior().getAgility() > cpu.getAgility()) {
-                atacante = LoginPanel.player.getWarrior();
+            if (chosenWarrior.getAgility() > cpu.getAgility()) {
+                atacante = chosenWarrior;
                 defensor = cpu;
-            } else if (LoginPanel.player.getWarrior().getAgility() < cpu.getAgility()) {
+            } else if (chosenWarrior.getAgility() < cpu.getAgility()){
                 atacante = cpu;
-                defensor = LoginPanel.player.getWarrior();
+                defensor = chosenWarrior;
             } else {
-                if (random.nextInt(2) > 0) {
+                if (random.nextInt(2) > 0){
                     atacante = cpu;
-                    defensor = LoginPanel.player.getWarrior();
-                } else {
-                    atacante = LoginPanel.player.getWarrior();
+                    defensor = chosenWarrior;
+                }
+                else {
+                    atacante = chosenWarrior;
                     defensor = cpu;
                 }
             }
@@ -168,29 +163,30 @@ public class BattlePanel extends MainPanel{
                 if (battle(atacante, defensor, random)){
                     // Update Life
                     progressBar5B.setValue(cpu.getLife());
-                    progressBar5A.setValue(LoginPanel.player.getWarrior().getLife());
-                    if (cpu.getLife() <= totalLifeCPU * 0.2) {
+                    progressBar5A.setValue(chosenWarrior.getLife());
+                    if (cpu.getLife() <= totalLifeCPU*0.2){
                         progressBar5B.setForeground(Color.RED);
-                    } else if (cpu.getLife() <= totalLifeCPU * 0.6) {
+                    } else if (cpu.getLife() <= totalLifeCPU*0.6){
                         progressBar5B.setForeground(Color.YELLOW);
                     }
-                    if (LoginPanel.player.getWarrior().getLife() <= totalLifePlayer * 0.2) {
+                    if (chosenWarrior.getLife() <= totalLifePlayer*0.2){
                         progressBar5A.setForeground(Color.RED);
-                    } else if (LoginPanel.player.getWarrior().getLife() <= totalLifePlayer * 0.6) {
+                    } else if (chosenWarrior.getLife() <= totalLifePlayer*0.6){
                         progressBar5A.setForeground(Color.YELLOW);
                     }
                 } else {
-                    LoginPanel.player.getWarrior().setLife(totalLifePlayer);
+                    chosenWarrior.setLife(totalLifePlayer);
                     cpu.setLife(totalLifeCPU);
                     jDialog.setVisible(true);
                 }
             } else {
-                LoginPanel.player.getWarrior().setLife(totalLifePlayer);
+                chosenWarrior.setLife(totalLifePlayer);
                 cpu.setLife(totalLifeCPU);
                 jDialog.setVisible(true);
             }
         });
         clearConsoleButton.addActionListener(actionEvent -> textArea1.setText(null));
+
     }
 
     boolean battle(Warrior defender, Warrior attacker, Random random) {
@@ -200,10 +196,10 @@ public class BattlePanel extends MainPanel{
                 if (random.nextInt(49) + 1 < defender.getAgility()) {
                     textArea1.append("Attack evaded\n");
                 } else {
-                    int attack = (attacker.getStrength() + LoginPanel.player.getWarrior().getWeapon().getStrength()) - defender.getDefense();
+                    int attack = (attacker.getStrength() + chosenWarrior.getWeapon().getStrength()) - defender.getDefense();
                     if (random.nextInt(19) + 1 == 1) {
                         textArea1.append("Critic!! ");
-                        attack = (attacker.getStrength() + LoginPanel.player.getWarrior().getWeapon().getStrength()) * 2 - defender.getDefense();
+                        attack = (attacker.getStrength() + chosenWarrior.getWeapon().getStrength()) * 2 - defender.getDefense();
                     }
                     defender.setLife(defender.getLife() - (attack));
                     textArea1.append("-" + attack + " of life to " + defender.getName() + "\n");
@@ -212,16 +208,10 @@ public class BattlePanel extends MainPanel{
                 textArea1.append("Attack failed\n");
             }
             if (defender.getLife() <= 0) {
-                if (defender == LoginPanel.player.getWarrior()) {
+                if (defender == chosenWarrior)
                     jDialog.setTitle("You have won!! ;D");
-                    Main.logger.log(Level.INFO, "The player won the game +" + (cpu.getPoints() + cpu.getWeapon().getPoints()));
-                    LoginPanel.player.setPoints((int) (LoginPanel.player.getPoints() + (cpu.getPoints() + cpu.getWeapon().getPoints())));
-                    LoginPanel.player.setWon((int) (LoginPanel.player.getWon() + 1));
-                } else {
+                else
                     jDialog.setTitle("You have lost.. :(");
-                    Main.logger.log(Level.INFO, "The player lost the game");
-                    LoginPanel.player.setLost((int) (LoginPanel.player.getLost() + 1));
-                }
                 return false;
             }
             if (attacker.getSpeed() <= defender.getSpeed()) {

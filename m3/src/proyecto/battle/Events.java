@@ -5,13 +5,12 @@ import proyecto.battle.containers.WarriorContainer;
 import proyecto.battle.containers.WeaponContainer;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Events {
 
-    private static Connection connection;
-
     public static void importDB() throws SQLException, ClassNotFoundException {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost/battle?serverTimezone=UTC", "root", "root");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/battle?serverTimezone=UTC", "root", "root");
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         Statement stmnt = connection.createStatement();
@@ -30,7 +29,7 @@ public class Events {
             WeaponContainer.weaponArrayList.add(new Weapon(rs.getInt(5), rs.getInt(4), rs.getString(3), rs.getString(2), rs.getInt(6)));
         }
 
-        // Loop to check if elements have been introduced into the class
+        //Loop to check if elements have been introduced into the class
         query = "select * from warriors";
         rs = stmnt.executeQuery(query);
 
@@ -47,8 +46,10 @@ public class Events {
 
     public static void importNoDB() {
         // Testing // ADD to container some players
-        PlayerContainer.playerArrayList.add(new Player("PepeD", "1234", 150, 7, 2));
-        // ADD to container all warriors
+        PlayerContainer.playerArrayList = new ArrayList<>();
+        PlayerContainer.playerArrayList.add(new Player("PepeD", "test", 150,7, 2));
+        // Testing // ADD to container all warriors
+        WarriorContainer.warriorArrayList = new ArrayList<>();
         WarriorContainer.warriorArrayList.add(new Warrior("Nedraec Forgeshaper", "assets/warriors/nedraec.jpeg", 60, 6, 4, 5, 3, 1, 21));
         WarriorContainer.warriorArrayList.add(new Warrior("Safomli Platebreaker", "assets/warriors/samfoli.jpg", 60, 6, 4, 5, 3, 1, 21));
         WarriorContainer.warriorArrayList.add(new Warrior("Khekroc Heavyshoulder", "assets/warriors/khekroc.png", 60, 6, 4, 5, 3, 1, 21));
@@ -58,7 +59,8 @@ public class Events {
         WarriorContainer.warriorArrayList.add(new Warrior("Maol-Chaluim Maoileanach", "assets/warriors/maol-chaluim.jpg", 40, 4, 2, 7, 7, 2, 19));
         WarriorContainer.warriorArrayList.add(new Warrior("Gillìosa Fòlais", "assets/warriors/gilliosa.jpg", 40, 4, 2, 7, 7, 2, 19));
         WarriorContainer.warriorArrayList.add(new Warrior("Seumas Forsàidh", "assets/warriors/seumas.jpg", 40, 4, 2, 7, 7, 2, 19));
-        // ADD to container all weapons
+        // Testing // ADD to container all weapons
+        WeaponContainer.weaponArrayList = new ArrayList<>();
         WeaponContainer.weaponArrayList.add(new Weapon(3, 0, "assets/weapons/dagger.jpg", "Dagger", 10)); // Dagger
         WeaponContainer.weaponArrayList.add(new Weapon(1, 1, "assets/weapons/sword.jpg", "Sword", 10)); // Sword
         WeaponContainer.weaponArrayList.add(new Weapon(3, 0, "assets/weapons/axe.png", "Axe", 10)); // Axe
@@ -70,19 +72,19 @@ public class Events {
         WeaponContainer.weaponArrayList.add(new Weapon(5, 0, "assets/weapons/twoHandedAxe.jpg", "TwoHandedAxe", 20)); // TwoHandedAxe
     }
 
-    public static void addPlayerDB(Player player) throws SQLException, ClassNotFoundException, NullPointerException {
+    public static void addPlayer(Player player) throws SQLException, ClassNotFoundException{
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/battle?serverTimezone=UTC", "root", "root");
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
         String update = "insert into players(player_id, player_name, passwd, points, wins, losses) values (?,?,?, ?, ?, ?)";
         PreparedStatement ps = connection.prepareStatement(update);
-        ps.setString(2, player.getName());
-        ps.setString(3, player.getPassword());
-        ps.setInt(4, 0);
-        ps.setInt(5, 0);
-        ps.setInt(6, 0);
+
+        ps.setString(2,player.getName());
+        ps.setString(3,player.getPassword());
+        ps.setInt(4,0);
+        ps.setInt(5,0);
+        ps.setInt(6,0);
         ps.executeUpdate();
-    }
-
-    public static void addPlayerNoDB(Player player) {
-
     }
 
 }

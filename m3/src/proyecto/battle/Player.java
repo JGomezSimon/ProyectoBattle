@@ -2,30 +2,13 @@ package proyecto.battle;
 
 public class Player {
     String name, password;
-    float points, won, lost;
-    Warrior warrior;
+    int points, won, lost;
 
-    public Player(String name, String password, float points, float win, float lost) {
+    public Player(String name, String password, int points, int win, int lost) {
         this.name = name;
         this.points = points;
         this.won = win;
         this.lost = lost;
-        this.password = password;
-    }
-
-    public Warrior getWarrior() {
-        return warrior;
-    }
-
-    public void setWarrior(Warrior warrior) {
-        this.warrior = warrior;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -37,7 +20,7 @@ public class Player {
         this.name = name;
     }
 
-    public float getPoints() {
+    public int getPoints() {
         return points;
     }
 
@@ -45,7 +28,7 @@ public class Player {
         this.points = points;
     }
 
-    public float getWon() {
+    public int getWon() {
         return won;
     }
 
@@ -53,12 +36,15 @@ public class Player {
         this.won = won;
     }
 
-    public float getLost() {
+    public int getLost() {
         return lost;
     }
 
     public void setLost(int lost) {
         this.lost = lost;
-        this.password = password;
     }
+
+    public String getPassword() { return password; }
+
+    public void setPassword(String password) { this.password = password; }
 }
