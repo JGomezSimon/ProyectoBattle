@@ -30,7 +30,10 @@ CREATE TABLE warriors(
 CREATE TABLE players(
 	player_id int auto_increment primary key,
     player_name varchar(255),
-    passwd varchar(255)
+    passwd varchar(255),
+    points int,
+    wins int,
+    losses int
 );
 
 CREATE TABLE weapons_available(
@@ -91,7 +94,7 @@ insert into warriors(warrior_id, warrior_name, warrior_image_path, race_id, heal
 (8, 'Gillìosa Fòlais', 'assets/warriors/gilliosa.jpg', 3, 50, 5, 4, 6, 5, 20),
 (9, 'Seumas Forsàidh', 'assets/warriors/seumas.jpg', 3, 50, 5, 4, 6, 5, 20);
 
-insert into players(player_id, player_name) values (1,'test','test');
+insert into players(player_id, player_name) values (1,'test','test', 176, 7, 3);
 
 insert into rankings(player_id, global_points, warrior_id, wins, losses, win_loss_percentage) values (1,100,7,6,2,66.667)
 
