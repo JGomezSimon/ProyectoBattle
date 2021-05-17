@@ -58,7 +58,7 @@ public class MainPanel extends JFrame{
             }
         });
         confirmarButton1.addActionListener(actionEvent -> {
-            if (BattlePanel.chosenWeapon != null){
+            if (BattlePanel.chosenWarrior.getWeapon() != null) {
                 escogerArmaButton.setEnabled(false);
                 jugarButton.setEnabled(true);
                 confirmarButton1.setEnabled(false);

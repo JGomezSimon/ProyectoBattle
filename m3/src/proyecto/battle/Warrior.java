@@ -17,6 +17,10 @@ public class Warrior {
         this.points = points;
     }
 
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
     public int getPoints() {
         return points;
     }

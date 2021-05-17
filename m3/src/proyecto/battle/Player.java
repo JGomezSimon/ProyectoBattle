@@ -2,7 +2,7 @@ package proyecto.battle;
 
 public class Player {
     String name;
-    int points, won, lost;
+    float points, won, lost;
 
     public Player(String name, int points, int win, int lost) {
         this.name = name;
@@ -19,7 +19,7 @@ public class Player {
         this.name = name;
     }
 
-    public int getPoints() {
+    public float getPoints() {
         return points;
     }
 
@@ -27,7 +27,7 @@ public class Player {
         this.points = points;
     }
 
-    public int getWon() {
+    public float getWon() {
         return won;
     }
 
@@ -35,7 +35,7 @@ public class Player {
         this.won = won;
     }
 
-    public int getLost() {
+    public float getLost() {
         return lost;
     }
 

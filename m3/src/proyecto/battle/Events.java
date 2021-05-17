@@ -1,5 +1,6 @@
 package proyecto.battle;
 
+import proyecto.battle.containers.PlayerContainer;
 import proyecto.battle.containers.WarriorContainer;
 import proyecto.battle.containers.WeaponContainer;
 
@@ -38,6 +39,9 @@ public class Events {
     }
 
     public static void importNoDB() {
+        // Testing // ADD to container some players
+        PlayerContainer.playerArrayList = new ArrayList<>();
+        PlayerContainer.playerArrayList.add(new Player("PepeD", 400, 7, 2));
         // Testing // ADD to container all warriors
         WarriorContainer.warriorArrayList = new ArrayList<>();
         WarriorContainer.warriorArrayList.add(new Warrior("Nedraec Forgeshaper", "assets/warriors/nedraec.jpeg", 60, 6, 4, 5, 3, 1, 21));

@@ -2,7 +2,6 @@ package proyecto.battle.gui;
 
 import proyecto.battle.Main;
 import proyecto.battle.Warrior;
-import proyecto.battle.Weapon;
 import proyecto.battle.containers.WarriorContainer;
 import proyecto.battle.containers.WeaponContainer;
 
@@ -17,7 +16,6 @@ import java.util.Random;
 
 public class BattlePanel extends MainPanel{
     public static Warrior chosenWarrior;
-    public static Weapon chosenWeapon;
     private JPanel mainPanel;
     private JLabel photoLabel1B;
     private JLabel photoLabel2B;
@@ -45,8 +43,6 @@ public class BattlePanel extends MainPanel{
     private JTextArea textArea1;
     private JButton fightButton;
     private final JDialog jDialog;
-    int totalLifeCPU;
-    int totalLifePlayer;
     Warrior cpu;
 
     public BattlePanel() throws IOException {
@@ -94,7 +90,7 @@ public class BattlePanel extends MainPanel{
         int random9 = random.nextInt(8);
         if (WarriorContainer.warriorArrayList.get(random9) == chosenWarrior) random9 = random9 - 1;
         cpu = WarriorContainer.warriorArrayList.get(random9);
-        Weapon cpuWeapon = WeaponContainer.weaponArrayList.get(random9);
+        cpu.setWeapon(WeaponContainer.weaponArrayList.get(random9));
 
         int totalLifeCPU = cpu.getLife();
         int totalLifePlayer = cpu.getLife();
@@ -108,11 +104,11 @@ public class BattlePanel extends MainPanel{
         progressBar2B.setMaximum(7);
         progressBar3B.setMaximum(12);
         progressBar4B.setMaximum(4);
-        progressBar1B.setValue(chosenWarrior.getStrength() + chosenWeapon.getStrength());
+        progressBar1B.setValue(chosenWarrior.getStrength() + chosenWarrior.getWeapon().getStrength());
         progressBar1B.setString(String.valueOf(chosenWarrior.getStrength() + chosenWarrior.getStrength()));
         progressBar2B.setValue(chosenWarrior.getAgility());
         progressBar2B.setString(String.valueOf(chosenWarrior.getAgility()));
-        progressBar3B.setValue(chosenWarrior.getSpeed() + chosenWeapon.getSpeed());
+        progressBar3B.setValue(chosenWarrior.getSpeed() + chosenWarrior.getWeapon().getSpeed());
         progressBar3B.setString(String.valueOf(chosenWarrior.getSpeed() + chosenWarrior.getSpeed()));
         progressBar4B.setValue(chosenWarrior.getDefense());
         progressBar4B.setString(String.valueOf(chosenWarrior.getDefense()));
@@ -121,12 +117,12 @@ public class BattlePanel extends MainPanel{
         progressBar2A.setMaximum(7);
         progressBar3A.setMaximum(12);
         progressBar4A.setMaximum(4);
-        progressBar1A.setValue(cpu.getStrength() + cpuWeapon.getStrength());
-        progressBar1A.setString(String.valueOf(cpu.getStrength() + cpuWeapon.getStrength()));
+        progressBar1A.setValue(cpu.getStrength() + cpu.getWeapon().getStrength());
+        progressBar1A.setString(String.valueOf(cpu.getStrength() + cpu.getWeapon().getStrength()));
         progressBar2A.setValue(cpu.getAgility());
         progressBar2A.setString(String.valueOf(cpu.getAgility()));
-        progressBar3A.setValue(cpu.getSpeed() + cpuWeapon.getSpeed());
-        progressBar3A.setString(String.valueOf(cpu.getSpeed() + cpuWeapon.getSpeed()));
+        progressBar3A.setValue(cpu.getSpeed() + cpu.getWeapon().getSpeed());
+        progressBar3A.setString(String.valueOf(cpu.getSpeed() + cpu.getWeapon().getSpeed()));
         progressBar4A.setValue(cpu.getDefense());
         progressBar4A.setString(String.valueOf(cpu.getDefense()));
 
@@ -134,17 +130,17 @@ public class BattlePanel extends MainPanel{
         photoLabel1A.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         photoLabel1B.setIcon(new ImageIcon(ImageIO.read(new File(chosenWarrior.getUrl()))));
         photoLabel1B.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        photoLabel2A.setIcon(new ImageIcon(ImageIO.read(new File(cpuWeapon.getUrl())).getScaledInstance(75, 75, Image.SCALE_SMOOTH)));
-        photoLabel2B.setIcon(new ImageIcon(ImageIO.read(new File(chosenWeapon.getUrl())).getScaledInstance(75, 75, Image.SCALE_SMOOTH)));
+        photoLabel2A.setIcon(new ImageIcon(ImageIO.read(new File(cpu.getWeapon().getUrl())).getScaledInstance(75, 75, Image.SCALE_SMOOTH)));
+        photoLabel2B.setIcon(new ImageIcon(ImageIO.read(new File(chosenWarrior.getWeapon().getUrl())).getScaledInstance(75, 75, Image.SCALE_SMOOTH)));
 
-        if (chosenWarrior.getSpeed() > cpu.getSpeed()){
+        if (chosenWarrior.getSpeed() > cpu.getSpeed()) {
             atacante = chosenWarrior;
             defensor = cpu;
-        } else if (chosenWarrior.getSpeed() < cpu.getSpeed()){
+        } else if (chosenWarrior.getSpeed() < cpu.getSpeed()) {
             atacante = cpu;
             defensor = chosenWarrior;
         } else {
-            if (chosenWarrior.getAgility() > cpu.getAgility()){
+            if (chosenWarrior.getAgility() > cpu.getAgility()) {
                 atacante = chosenWarrior;
                 defensor = cpu;
             } else if (chosenWarrior.getAgility() < cpu.getAgility()){
@@ -200,10 +196,10 @@ public class BattlePanel extends MainPanel{
                 if (random.nextInt(49) + 1 < defender.getAgility()) {
                     textArea1.append("Attack evaded\n");
                 } else {
-                    int attack = (attacker.getStrength() + chosenWeapon.getStrength()) - defender.getDefense();
+                    int attack = (attacker.getStrength() + chosenWarrior.getWeapon().getStrength()) - defender.getDefense();
                     if (random.nextInt(19) + 1 == 1) {
                         textArea1.append("Critic!! ");
-                        attack = (attacker.getStrength() + chosenWeapon.getStrength()) * 2 - defender.getDefense();
+                        attack = (attacker.getStrength() + chosenWarrior.getWeapon().getStrength()) * 2 - defender.getDefense();
                     }
                     defender.setLife(defender.getLife() - (attack));
                     textArea1.append("-" + attack + " of life to " + defender.getName() + "\n");
@@ -227,8 +223,5 @@ public class BattlePanel extends MainPanel{
             }
         }
         return true;
-
     }
-
-
 }

@@ -93,7 +93,7 @@ public class WeaponPanel extends MainPanel {
         });
     }
     void finishPanel(int id){
-        BattlePanel.chosenWeapon = WeaponContainer.weaponArrayList.get(id);
+        BattlePanel.chosenWarrior.setWeapon(WeaponContainer.weaponArrayList.get(id));
         this.setVisible(false);
         Main.mainPanel.setVisible(true);
     }
