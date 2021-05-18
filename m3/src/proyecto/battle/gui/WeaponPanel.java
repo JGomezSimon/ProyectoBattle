@@ -13,7 +13,7 @@ import java.util.logging.Level;
 public class WeaponPanel extends MainPanel {
     private JPanel weaponPanel;
     private JButton salirButton;
-    private JComboBox comboBox1;
+    private JComboBox<String> comboBox1;
     private JProgressBar progressBar1;
     private JProgressBar progressBar2;
     private JLabel imageLabel;
@@ -59,6 +59,7 @@ public class WeaponPanel extends MainPanel {
             if (WeaponContainer.weaponArrayList.get(i).getName().equals(comboBox1.getSelectedItem()))
                 temporalID = i;
         }
+        selectedWeapon = temporalID;
         progressBar1.setString(String.valueOf(WeaponContainer.weaponArrayList.get(temporalID).getStrength()));
         progressBar2.setString(String.valueOf(WeaponContainer.weaponArrayList.get(temporalID).getSpeed()));
         progressBar1.setValue(WeaponContainer.weaponArrayList.get(temporalID).getStrength());

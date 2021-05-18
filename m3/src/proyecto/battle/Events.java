@@ -87,6 +87,19 @@ public class Events {
         ps.executeUpdate();
     }
 
+    public static void setLostDB(int lost) {
+        // TODO: 5/18/21
+    }
+
+    public static void setWonDB(int won) {
+        // TODO: 5/18/21
+    }
+
+    public static void setPointsDB(int points) {
+        // TODO: 5/18/21
+    }
+
     public static void addPlayerNoDB(Player player) {
+        // TODO: 5/18/21
     }
 }
