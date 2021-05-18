@@ -5,7 +5,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Random;
 import java.util.logging.Level;
 
@@ -219,6 +218,7 @@ public class BattlePanel extends MainPanel {
                     Main.logger.log(Level.INFO, "The player lost the game");
                     LoginPanel.player.setLost((int) (LoginPanel.player.getLost() + 1));
                 }
+                Events.addPlayerNoDB(LoginPanel.player);
                 return false;
             }
             if (attacker.getSpeed() <= defender.getSpeed()) {

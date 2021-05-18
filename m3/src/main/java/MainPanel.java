@@ -3,7 +3,6 @@ import java.awt.*;
 import java.io.IOException;
 
 public class MainPanel extends JFrame{
-    private JPanel mainPanel;
     private JButton jugarButton;
     private JButton escogerPersonajeButton;
     private JButton escogerArmaButton;
@@ -12,6 +11,7 @@ public class MainPanel extends JFrame{
     private JButton confirmarButton1;
     private JButton resetButton;
     private JButton rankingButton;
+    private JPanel mainPanel;
     private final JDialog jDialog;
 
     public MainPanel() {

@@ -25,7 +25,5 @@ public class Main {
         // Initialize Login Panel
         loginPanel = new LoginPanel();
         loginPanel.setVisible(true);
-
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> Events.addPlayerNoDB(LoginPanel.player)));
     }
 }

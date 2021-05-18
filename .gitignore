@@ -100,3 +100,4 @@ local.properties
 ### JetBrains template
 
 .idea/*
+/m3/.idea/*
