@@ -22,6 +22,8 @@ public class BattlePanel extends MainPanel {
     private JLabel label2B;
     private JLabel label3B;
     private JLabel label4B;
+    private JLabel namePlayer;
+    private JLabel nameCPU;
     private JProgressBar progressBar1B;
     private JProgressBar progressBar2B;
     private JProgressBar progressBar3B;
@@ -58,9 +60,9 @@ public class BattlePanel extends MainPanel {
         jDialog.setLocationRelativeTo(null);
         jDialog.setLayout(new FlowLayout());
         jDialog.setSize(250, 100);
-        jDialog.add(labelDialog);
         jDialog.add(button1);
         jDialog.add(button2);
+        jDialog.add(labelDialog);
         button1.addActionListener(e -> {
             jDialog.setVisible(false);
             this.dispose();
@@ -93,6 +95,9 @@ public class BattlePanel extends MainPanel {
 
         cpu = WarriorContainer.warriorArrayList.get(random9);
         cpu.setWeapon(WeaponContainer.weaponArrayList.get(random9));
+
+        namePlayer.setText(LoginPanel.player.getWarrior().getName() + " [You]");
+        nameCPU.setText(cpu.getName() + " [CPU]");
 
         int totalLifeCPU = cpu.getLife();
         int totalLifePlayer = cpu.getLife();
@@ -194,18 +199,18 @@ public class BattlePanel extends MainPanel {
         while (salir) {
             if (random.nextInt(99) + 1 > defender.getAgility() * 10) {
                 if (random.nextInt(49) + 1 < defender.getAgility()) {
-                    textArea1.append("Attack evaded\n");
+                    textArea1.append(attacker.getName() + " evaded the attack\n");
                 } else {
-                    int attack = (attacker.getStrength() + LoginPanel.player.getWarrior().getWeapon().getStrength()) - defender.getDefense();
+                    int attack = (attacker.getStrength() + attacker.getWeapon().getStrength()) - defender.getDefense();
                     if (random.nextInt(19) + 1 == 1) {
                         textArea1.append("Critic!! ");
-                        attack = (attacker.getStrength() + LoginPanel.player.getWarrior().getWeapon().getStrength()) * 2 - defender.getDefense();
+                        attack = (attacker.getStrength() + attacker.getWeapon().getStrength()) * 2 - defender.getDefense();
                     }
                     defender.setLife(defender.getLife() - (attack));
-                    textArea1.append("-" + attack + " of life to " + defender.getName() + "\n");
+                    textArea1.append("-" + attack + " of life to " + attacker.getName() + "\n");
                 }
             } else {
-                textArea1.append("Attack failed\n");
+                textArea1.append(defender.getName() + " missed the attack\n");
             }
             if (defender.getLife() <= 0) {
                 if (defender == LoginPanel.player.getWarrior()) {

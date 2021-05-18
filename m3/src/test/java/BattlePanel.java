@@ -35,6 +35,8 @@ public class BattlePanel extends MainPanel {
     private JButton clearConsoleButton;
     private JTextArea textArea1;
     private JButton fightButton;
+    private JLabel namePlayer;
+    private JLabel nameCPU;
     private final JDialog jDialog;
     Warrior cpu;
     JLabel labelDialog;
