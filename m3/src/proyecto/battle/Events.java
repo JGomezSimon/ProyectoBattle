@@ -31,10 +31,6 @@ public class Events {
             WarriorContainer.warriorArrayList.add(new Warrior(rs.getString(2), rs.getString(3), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(4), rs.getInt(10)));
         }
 
-        for(Warrior w : WarriorContainer.warriorArrayList){
-            System.out.println(w.getUrl());
-        }
-
         query = "select * from players";
         rs = stmnt.executeQuery(query);
 
@@ -70,15 +66,25 @@ public class Events {
     }
 
     public static void addPlayerDB(Player player) throws SQLException, ClassNotFoundException, NullPointerException {
-        String update = "insert into players(player_id, player_name, passwd, points, wins, losses) values (?,?,?, ?, ?, ?)";
+        int next_id = 0;
+        Statement stmnt = connection.createStatement();
+
+        String update = "insert into players(player_id, player_name, passwd, points, wins, losses) values (? , ?, ?, ?, ?, ?)";
         PreparedStatement ps = connection.prepareStatement(update);
+
+        ResultSet rs = stmnt.executeQuery("select player_id from players order by player_id limit 1");
+        if (rs.next()){
+            next_id = rs.getInt(1);
+        }
+        next_id = next_id + 1;
+
+        ps.setInt(1, next_id);
         ps.setString(2, player.getName());
         ps.setString(3, player.getPassword());
         ps.setInt(4, 0);
         ps.setInt(5, 0);
         ps.setInt(6, 0);
         ps.executeUpdate();
-        System.out.println("Pene");
     }
 
     public static void addPlayerNoDB(Player player) {
