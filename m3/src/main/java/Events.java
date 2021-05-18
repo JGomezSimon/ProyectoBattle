@@ -1,5 +1,10 @@
-import java.io.File;
-import java.io.IOException;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.*;
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.logging.Level;
 
@@ -53,6 +58,12 @@ public class Events {
     public static void importNoDB() {
         // TODO: 5/17/21
         // Import from file the players
+        JSONParser jsonParser = new JSONParser();
+        try (FileReader reader = new FileReader("users.json")) {
+            Object obj = jsonParser.parse(reader);
+            JSONArray employeeList = (JSONArray) obj;
+            employeeList.forEach( emp -> parsePlayerObject( (JSONObject) emp ) );
+        } catch (IOException | ParseException ignored) {}
 
         // ADD to container all warriors
         WarriorContainer.warriorArrayList.add(new Warrior("Nedraec Forgeshaper", Main.resource_root + "/warriors/nedraec.jpeg", 60, 6, 4, 5, 3, 1, 21));
@@ -74,6 +85,17 @@ public class Events {
         WeaponContainer.weaponArrayList.add(new Weapon(2, 3, Main.resource_root + "/weapons/katana.jpg", "Katana", 18)); // Katana
         WeaponContainer.weaponArrayList.add(new Weapon(0, 4, Main.resource_root + "/weapons/knife.jpg", "Knife", 12)); // Knife
         WeaponContainer.weaponArrayList.add(new Weapon(5, 0, Main.resource_root + "/weapons/twoHandedAxe.jpg", "TwoHandedAxe", 20)); // TwoHandedAxe
+    }
+
+    private static void parsePlayerObject(JSONObject player)
+    {
+        JSONObject employeeObject = (JSONObject) player.get("player");
+        String name = (String) employeeObject.get("name");
+        String password = (String) employeeObject.get("password");
+        double points = (double) employeeObject.get("points");
+        double won = (double) employeeObject.get("won");
+        double lost = (double) employeeObject.get("lost");
+        PlayerContainer.playerArrayList.add(new Player(name, password, new BigDecimal(points).floatValue(), new BigDecimal(won).floatValue(), new BigDecimal(lost).floatValue()));
     }
 
     public static void addPlayerDB(Player player) throws SQLException, ClassNotFoundException, NullPointerException {
@@ -111,7 +133,28 @@ public class Events {
     }
 
     public static void addPlayerNoDB(Player player) {
+        //First Employee
+        JSONObject playerDetails = new JSONObject();
+        playerDetails.put("name", player.getName());
+        playerDetails.put("password", player.getPassword());
+        playerDetails.put("points", player.getPoints());
+        playerDetails.put("won", player.getWon());
+        playerDetails.put("lost", player.getLost());
 
+        JSONObject playerObject = new JSONObject();
+        playerObject.put("player", playerDetails);
+
+        //Add employees to list
+        JSONArray playerList = new JSONArray();
+        playerList.add(playerObject);
+
+        //Write JSON file
+        try (FileWriter file = new FileWriter("users.json")) {
+            //We can write any JSONArray or JSONObject instance to the file
+            file.write(playerList.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 }
