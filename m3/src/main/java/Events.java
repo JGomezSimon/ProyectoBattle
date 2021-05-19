@@ -181,7 +181,7 @@ public class Events {
     }
 
     // Function to sum losses into players
-    public static void setLostDB(int lost) throws SQLException {
+    public static void setLostDB(int lost) throws SQLException, NullPointerException {
         String setLosses = "update players set losses = ? where player_id = ?";
         PreparedStatement ps = connection.prepareStatement(setLosses);
         ps.setInt(1, lost);
@@ -190,7 +190,7 @@ public class Events {
     }
 
     // Function to sum wins into player
-    public static void setWonDB(int won) throws SQLException, ClassNotFoundException {
+    public static void setWonDB(int won) throws SQLException, ClassNotFoundException, NullPointerException {
         String setLosses = "update players set wins = ? where player_id = ?";
         PreparedStatement ps = connection.prepareStatement(setLosses);
         ps.setInt(1, won);
@@ -199,7 +199,7 @@ public class Events {
     }
 
     // Function to sum up points into points
-    public static void setPointsDB(int points) throws SQLException {
+    public static void setPointsDB(int points) throws SQLException, NullPointerException {
         String setLosses = "update players set points = ? where player_id = ?";
         PreparedStatement ps = connection.prepareStatement(setLosses);
         ps.setInt(1, points);
@@ -207,7 +207,7 @@ public class Events {
         ps.executeUpdate();
     }
     // Function to save the most recent battle into the Database
-    public static void saveBattle() throws SQLException{
+    public static void saveBattle() throws SQLException, NullPointerException{
         int next_id = 0;
         Statement stmnt = connection.createStatement();
 

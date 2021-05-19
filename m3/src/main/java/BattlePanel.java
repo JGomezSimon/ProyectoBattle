@@ -43,7 +43,7 @@ public class BattlePanel extends MainPanel {
     JLabel labelDialog;
 
     public BattlePanel() throws IOException {
-        this.setPreferredSize(new Dimension(620, 490));
+        this.setPreferredSize(new Dimension(620, 500));
         this.setContentPane(mainPanel);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack();
@@ -240,7 +240,7 @@ public class BattlePanel extends MainPanel {
                 }
                 try {
                     Events.saveBattle();
-                } catch (SQLException throwables) {
+                } catch (SQLException | NullPointerException throwables) {
                     try {
                         Events.modifyPlayers();
                     } catch (IOException ignored) {

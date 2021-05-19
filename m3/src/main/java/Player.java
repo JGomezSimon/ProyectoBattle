@@ -56,11 +56,7 @@ public class Player {
 
     public void setPoints(int points) {
         this.points = points;
-        try {
-            Events.setPointsDB(points);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        try { Events.setPointsDB(points); } catch (SQLException | NullPointerException ignored) { }
     }
 
     public float getWon() {
@@ -69,10 +65,7 @@ public class Player {
 
     public void setWon(int won) {
         this.won = won;
-        try {
-            Events.setWonDB(won);
-        } catch (SQLException | ClassNotFoundException ignored) {
-        }
+        try { Events.setWonDB(won); } catch (SQLException | ClassNotFoundException| NullPointerException ignored) { }
     }
 
     public float getLost() {
@@ -81,10 +74,8 @@ public class Player {
 
     public void setLost(int lost) {
         this.lost = lost;
-        try {
-            Events.setLostDB(lost);
-        } catch (SQLException ignored) {
-        }
+        try { Events.setLostDB(lost); } catch (SQLException | NullPointerException ignored) { }
+
     }
 
     public int getpId() {
@@ -94,10 +85,9 @@ public class Player {
     public void setpId(int pId) {
         this.pId = pId;
     }
-    //Getters and Setters for opopnent stats
 
-    // Oponent Weapon
-
+    //Getters and Setters for opponent stats
+    // Opponent Weapon
     public int getOpoId() {
         return opoId;
     }
@@ -107,9 +97,7 @@ public class Player {
     }
 
 
-    // Oponent Warrior
-
-
+    // Opponent Warrior
     public int getWepId() {
         return wepId;
     }
@@ -118,7 +106,7 @@ public class Player {
         this.wepId = wepId;
     }
 
-    // Oponent Health left
+    // Opponent Health left
     public int getHp() { return hp; }
 
     public void setHp(int hp) { this.hp = hp; }
