@@ -1,0 +1,103 @@
+[
+  {
+    "warrior0": {
+      "strength": 6,
+      "defense": 4,
+      "race_id": 1,
+      "name": "Nedraec Forgeshaper",
+      "agility": 5,
+      "url": "src\/main\/resources\/warriors\/nedraec.jpeg",
+      "life": 60,
+      "speed": 3,
+      "points": 21
+    },
+    "warrior1": {
+      "strength": 6,
+      "defense": 4,
+      "race_id": 1,
+      "name": "Safomli Platebreaker",
+      "agility": 5,
+      "url": "src\/main\/resources\/warriors\/samfoli.jpg",
+      "life": 60,
+      "speed": 3,
+      "points": 21
+    },
+    "warrior2": {
+      "strength": 6,
+      "defense": 4,
+      "race_id": 1,
+      "name": "Khekroc Heavyshoulder",
+      "agility": 5,
+      "url": "src\/main\/resources\/warriors\/khekroc.png",
+      "life": 60,
+      "speed": 3,
+      "points": 21
+    },
+    "warrior3": {
+      "strength": 5,
+      "defense": 3,
+      "race_id": 3,
+      "name": "Edwaradrin Ohmswis",
+      "agility": 6,
+      "url": "src\/main\/resources\/warriors\/edwaradrin.jpg",
+      "life": 50,
+      "speed": 5,
+      "points": 20
+    },
+    "warrior4": {
+      "strength": 5,
+      "defense": 3,
+      "race_id": 3,
+      "name": "Legomoreno",
+      "agility": 6,
+      "url": "src\/main\/resources\/warriors\/legomoreno.jpg",
+      "life": 50,
+      "speed": 5,
+      "points": 20
+    },
+    "warrior5": {
+      "strength": 5,
+      "defense": 3,
+      "race_id": 3,
+      "name": "Roferolas Elfbrooks",
+      "agility": 6,
+      "url": "src\/main\/resources\/warriors\/roferolas.jpg",
+      "life": 50,
+      "speed": 5,
+      "points": 20
+    },
+    "warrior6": {
+      "strength": 4,
+      "defense": 2,
+      "race_id": 2,
+      "name": "Maol-Chaluim Maoileanach",
+      "agility": 7,
+      "url": "src\/main\/resources\/warriors\/maol-chaluim.jpg",
+      "life": 40,
+      "speed": 7,
+      "points": 19
+    },
+    "warrior7": {
+      "strength": 4,
+      "defense": 2,
+      "race_id": 2,
+      "name": "Gillìosa Fòlais",
+      "agility": 7,
+      "url": "src\/main\/resources\/warriors\/gilliosa.jpg",
+      "life": 40,
+      "speed": 7,
+      "points": 19
+    },
+    "warrior8": {
+      "strength": 4,
+      "defense": 2,
+      "race_id": 2,
+      "name": "Seumas Forsàidh",
+      "agility": 7,
+      "url": "src\/main\/resources\/warriors\/seumas.jpg",
+      "life": 40,
+      "speed": 7,
+      "points": 19
+    }
+  }
+]

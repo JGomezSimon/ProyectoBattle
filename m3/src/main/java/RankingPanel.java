@@ -20,6 +20,7 @@ public class RankingPanel extends JFrame {
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
         addToRanking(model);
 
+        // Sort the table
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(model);
         List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
         sortKeys.add(new RowSorter.SortKey(1, SortOrder.DESCENDING));
@@ -33,12 +34,14 @@ public class RankingPanel extends JFrame {
         table.setRowSorter(sorter);
         this.add(scrollPane);
 
+        // Button event to close the panel
         button.addActionListener(actionEvent -> {
             this.dispose();
             Main.mainPanel.setVisible(true);
         });
     }
 
+    // Function that loads the players to the table
     public void addToRanking(DefaultTableModel model) {
         for (Player i : PlayerContainer.playerArrayList) {
             String winRatio;

@@ -49,9 +49,10 @@ public class BattlePanel extends MainPanel {
         this.setLocationRelativeTo(null);
 
         Random random = new Random();
-        Warrior atacante;
-        Warrior defensor;
+        Warrior attacker;
+        Warrior defender;
 
+        // creation of the the win/lost dialog
         JButton button1 = new JButton("Return to Menu");
         JButton button2 = new JButton("Play again");
         labelDialog = new JLabel("");
@@ -63,12 +64,14 @@ public class BattlePanel extends MainPanel {
         jDialog.add(button1);
         jDialog.add(button2);
         jDialog.add(labelDialog);
+        // Button event to return to menu
         button1.addActionListener(e -> {
             jDialog.setVisible(false);
             this.dispose();
             this.setVisible(false);
             Main.mainPanel.setVisible(true);
         });
+        // Button event to play again
         button2.addActionListener (e -> {
             this.dispose();
             try {
@@ -79,12 +82,14 @@ public class BattlePanel extends MainPanel {
             Main.battlePanel.setVisible(true);
             jDialog.setVisible(false);
         });
+        // If the player close the dialog do the button1 event
         jDialog.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent we) {
                 button1.doClick();
             }
         });
 
+        // Generate random warrior to the CPU
         int random9 = random.nextInt(8);
         if (WarriorContainer.warriorArrayList.get(random9) == Main.player.getWarrior()) {
             if (random9 == 0)
@@ -92,21 +97,21 @@ public class BattlePanel extends MainPanel {
             else
                 random9 = random9 - 1;
         }
-
         cpu = WarriorContainer.warriorArrayList.get(random9);
         cpu.setWeapon(WeaponContainer.weaponArrayList.get(random9));
 
+        // Set the tag to view the warrior name of the player and CPU
         namePlayer.setText(Main.player.getWarrior().getName() + " [You]");
         nameCPU.setText(cpu.getName() + " [CPU]");
 
         int totalLifeCPU = cpu.getLife();
         int totalLifePlayer = cpu.getLife();
 
+        // Set-up of the Bars
         progressBar5A.setMaximum(Main.player.getWarrior().getLife());
         progressBar5A.setValue(Main.player.getWarrior().getLife());
         progressBar5B.setMaximum(cpu.getLife());
         progressBar5B.setValue(cpu.getLife());
-
         progressBar1B.setMaximum(11);
         progressBar2B.setMaximum(7);
         progressBar3B.setMaximum(12);
@@ -119,7 +124,6 @@ public class BattlePanel extends MainPanel {
         progressBar3B.setString(String.valueOf(Main.player.getWarrior().getSpeed() + Main.player.getWarrior().getSpeed()));
         progressBar4B.setValue(Main.player.getWarrior().getDefense());
         progressBar4B.setString(String.valueOf(Main.player.getWarrior().getDefense()));
-
         progressBar1A.setMaximum(11);
         progressBar2A.setMaximum(7);
         progressBar3A.setMaximum(12);
@@ -133,6 +137,7 @@ public class BattlePanel extends MainPanel {
         progressBar4A.setValue(cpu.getDefense());
         progressBar4A.setString(String.valueOf(cpu.getDefense()));
 
+        // Set-up images of the warrior and weapon
         photoLabel1A.setIcon(new ImageIcon(ImageIO.read(new File(cpu.getUrl()))));
         photoLabel1A.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         photoLabel1B.setIcon(new ImageIcon(ImageIO.read(new File(Main.player.getWarrior().getUrl()))));
@@ -140,34 +145,35 @@ public class BattlePanel extends MainPanel {
         photoLabel2A.setIcon(new ImageIcon(ImageIO.read(new File(cpu.getWeapon().getUrl())).getScaledInstance(75, 75, Image.SCALE_SMOOTH)));
         photoLabel2B.setIcon(new ImageIcon(ImageIO.read(new File(Main.player.getWarrior().getWeapon().getUrl())).getScaledInstance(75, 75, Image.SCALE_SMOOTH)));
 
+        // Determinate who begins the battle
         if (Main.player.getWarrior().getSpeed() > cpu.getSpeed()) {
-            atacante = Main.player.getWarrior();
-            defensor = cpu;
+            attacker = Main.player.getWarrior();
+            defender = cpu;
         } else if (Main.player.getWarrior().getSpeed() < cpu.getSpeed()) {
-            atacante = cpu;
-            defensor = Main.player.getWarrior();
+            attacker = cpu;
+            defender = Main.player.getWarrior();
         } else {
             if (Main.player.getWarrior().getAgility() > cpu.getAgility()) {
-                atacante = Main.player.getWarrior();
-                defensor = cpu;
+                attacker = Main.player.getWarrior();
+                defender = cpu;
             } else if (Main.player.getWarrior().getAgility() < cpu.getAgility()) {
-                atacante = cpu;
-                defensor = Main.player.getWarrior();
+                attacker = cpu;
+                defender = Main.player.getWarrior();
             } else {
                 if (random.nextInt(2) > 0) {
-                    atacante = cpu;
-                    defensor = Main.player.getWarrior();
+                    attacker = cpu;
+                    defender = Main.player.getWarrior();
                 } else {
-                    atacante = Main.player.getWarrior();
-                    defensor = cpu;
+                    attacker = Main.player.getWarrior();
+                    defender = cpu;
                 }
             }
         }
 
         fightButton.addActionListener(actionEvent -> {
-            if (battle(defensor, atacante, random)){
-                if (battle(atacante, defensor, random)){
-                    // Update Life
+            if (battle(defender, attacker, random)) {
+                if (battle(attacker, defender, random)) {
+                    // Update Life of the bars
                     progressBar5B.setValue(cpu.getLife());
                     progressBar5A.setValue(Main.player.getWarrior().getLife());
                     if (cpu.getLife() <= totalLifeCPU * 0.2) {
@@ -181,11 +187,13 @@ public class BattlePanel extends MainPanel {
                         progressBar5A.setForeground(Color.YELLOW);
                     }
                 } else {
+                    // finish turn
                     Main.player.getWarrior().setLife(totalLifePlayer);
                     cpu.setLife(totalLifeCPU);
                     jDialog.setVisible(true);
                 }
             } else {
+                // finish turn
                 Main.player.getWarrior().setLife(totalLifePlayer);
                 cpu.setLife(totalLifeCPU);
                 jDialog.setVisible(true);
@@ -212,6 +220,7 @@ public class BattlePanel extends MainPanel {
             } else {
                 textArea1.append(defender.getName() + " missed the attack\n");
             }
+            // finish battle and determinate if the player has won
             if (defender.getLife() <= 0) {
                 if (defender == Main.player.getWarrior()) {
                     labelDialog.setText("You have won!! ;D");

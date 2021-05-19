@@ -17,7 +17,7 @@ public class WarriorPanel extends MainPanel {
     private JProgressBar progressBar2;
     private JProgressBar progressBar3;
     private JProgressBar progressBar4;
-    private JComboBox comboBox1;
+    private JComboBox<String> comboBox1;
     private JProgressBar progressBar5;
     private JLabel label5;
     private int selectedWarrior;
@@ -31,6 +31,7 @@ public class WarriorPanel extends MainPanel {
 
         for (Warrior i : WarriorContainer.warriorArrayList) comboBox1.addItem(i.getName());
 
+        // set of the bars and images
         progressBar1.setMaximum(6);
         progressBar2.setMaximum(7);
         progressBar3.setMaximum(7);
@@ -53,13 +54,14 @@ public class WarriorPanel extends MainPanel {
         progressBar4.setValue(WarriorContainer.warriorArrayList.get(0).getDefense());
         progressBar5.setValue(WarriorContainer.warriorArrayList.get(0).getLife());
 
-
+        // button event to close the panel
         salirButton.addActionListener(actionEvent -> {
             this.setVisible(false);
             Main.mainPanel.setVisible(true);
             finishPanel(selectedWarrior);
         });
-        // photoLabel1.setIcon(new ImageIcon(ImageIO.read(new File(WarriorContainer.warriorArrayList.get(0).getUrl())).getScaledInstance(150, 115, Image.SCALE_SMOOTH)));
+
+        // como box event to determinate what warrior is chosen and change the image
         comboBox1.addActionListener(actionEvent -> {
             for (int i = 0; i < 9; i++) {
                 if (WarriorContainer.warriorArrayList.get(i).getName().equals(comboBox1.getSelectedItem())) {
@@ -83,6 +85,8 @@ public class WarriorPanel extends MainPanel {
             }
         });
     }
+
+    // event when the panel is closed that sets the warrior that the player have chosen
     void finishPanel(int id) {
         Main.player.setWarrior(WarriorContainer.warriorArrayList.get(id));
         Main.logger.log(Level.INFO, "The player have choose " + WarriorContainer.warriorArrayList.get(id).getName() + " [warrior]");

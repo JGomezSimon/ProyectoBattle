@@ -21,14 +21,15 @@ public class WeaponPanel extends MainPanel {
         this.pack();
         this.setLocationRelativeTo(null);
 
+        // switch to determinate the weapons that each race can choose
         switch (Main.player.getWarrior().getRace_id()) {
-            case 1: // Enano
+            case 1: // Dwarf
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(2).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(7).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(3).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(8).getName());
                 break;
-            case 2: // Elfo
+            case 2: // Elf
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(7).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(0).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(3).getName());
@@ -36,7 +37,7 @@ public class WeaponPanel extends MainPanel {
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(4).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(5).getName());
                 break;
-            case 3: // Humano
+            case 3: // Human
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(7).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(0).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(2).getName());
@@ -46,6 +47,7 @@ public class WeaponPanel extends MainPanel {
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(6).getName());
         }
 
+        // Setup of the bars
         progressBar1.setMaximum(5);
         progressBar2.setMaximum(5);
 
@@ -65,12 +67,13 @@ public class WeaponPanel extends MainPanel {
             e.printStackTrace();
         }
 
-
+        // button event to close the panel
         salirButton.addActionListener(actionEvent -> {
             this.setVisible(false);
             Main.mainPanel.setVisible(true);
             finishPanel(selectedWeapon);
         });
+        // como box event to determinate what weapon is chosen and change the image
         comboBox1.addActionListener(actionEvent -> {
             for (int i = 0; i < 9; i++) {
                 if (WeaponContainer.weaponArrayList.get(i).getName().equals(comboBox1.getSelectedItem())) {
@@ -89,6 +92,8 @@ public class WeaponPanel extends MainPanel {
 
         });
     }
+
+    // event when the panel is closed that sets the weapon that the player have chosen
     void finishPanel(int id) {
         Main.player.getWarrior().setWeapon(WeaponContainer.weaponArrayList.get(id));
         Main.logger.log(Level.INFO, "The player have choose " + WeaponContainer.weaponArrayList.get(id).getName() + " [weapon]");

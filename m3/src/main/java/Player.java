@@ -41,7 +41,6 @@ public class Player {
 
     public void setPoints(int points) {
         this.points = points;
-        Events.setPointsDB(points);
     }
 
     public float getWon() {
@@ -50,7 +49,6 @@ public class Player {
 
     public void setWon(int won) {
         this.won = won;
-        Events.setWonDB(won);
     }
 
     public float getLost() {
@@ -59,6 +57,5 @@ public class Player {
 
     public void setLost(int lost) {
         this.lost = lost;
-        Events.setLostDB(lost);
     }
 }

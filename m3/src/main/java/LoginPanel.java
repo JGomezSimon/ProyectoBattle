@@ -21,6 +21,7 @@ public class LoginPanel extends MainPanel {
         this.pack();
         this.setLocationRelativeTo(null);
 
+        // button  event that verifies the name and password is correct and login the player
         loginButton.addActionListener(actionEvent -> {
             int id = 0;
             boolean flag = false;
@@ -51,6 +52,7 @@ public class LoginPanel extends MainPanel {
                 message.setText("*Incorrect name");
             }
         });
+        // button event to register the player to de DB or JSON
         registerButton.addActionListener(actionEvent -> {
             boolean flag = true;
             for (Player i : PlayerContainer.playerArrayList) {

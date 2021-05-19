@@ -22,19 +22,22 @@ public class MainPanel extends JFrame{
         this.pack();
         this.setLocationRelativeTo(null);
 
+        // dialog to advise the player that can confirm before choosing
         JButton button = new JButton("Ok");
         jDialog = new JDialog(this, "", true);
         jDialog.add(new JLabel ("You can't confirm before choosing"));
         jDialog.setLocationRelativeTo(null);
         jDialog.setLayout(new FlowLayout());
-        jDialog.setSize(250,100);
+        jDialog.setSize(250, 100);
         jDialog.add(button);
-        button.addActionListener (e -> jDialog.setVisible(false));
+        button.addActionListener(e -> jDialog.setVisible(false));
 
         escogerArmaButton.setEnabled(false);
         jugarButton.setEnabled(false);
         confirmarButton1.setEnabled(false);
 
+
+        // Set-up of the buttons events to close and open panels
         escogerArmaButton.addActionListener(actionEvent -> {
             this.setVisible(false);
             Main.weaponPanel.setVisible(true);

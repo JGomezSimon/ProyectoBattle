@@ -60,48 +60,95 @@ public class Events {
     }
 
     public static void importNoDB() {
-        // TODO: 5/17/21
-        // Import from file the players
-        JSONParser jsonParser = new JSONParser();
+        // Import JSON that contains the players
+        JSONParser playerParser = new JSONParser();
         try (FileReader reader = new FileReader("users.json")) {
-            Object obj = jsonParser.parse(reader);
-            JSONArray employeeList = (JSONArray) obj;
-            employeeList.forEach( emp -> parsePlayerObject( (JSONObject) emp ) );
-        } catch (IOException | ParseException ignored) {}
-
-        // ADD to container all warriors
-        WarriorContainer.warriorArrayList.add(new Warrior("Nedraec Forgeshaper", Main.resource_root + "/warriors/nedraec.jpeg", 60, 6, 4, 5, 3, 1, 21));
-        WarriorContainer.warriorArrayList.add(new Warrior("Safomli Platebreaker", Main.resource_root + "/warriors/samfoli.jpg", 60, 6, 4, 5, 3, 1, 21));
-        WarriorContainer.warriorArrayList.add(new Warrior("Khekroc Heavyshoulder", Main.resource_root + "/warriors/khekroc.png", 60, 6, 4, 5, 3, 1, 21));
-        WarriorContainer.warriorArrayList.add(new Warrior("Edwaradrin Ohmswis", Main.resource_root + "/warriors/edwaradrin.jpg", 50, 5, 3, 6, 5, 3, 20));
-        WarriorContainer.warriorArrayList.add(new Warrior("Legomoreno", Main.resource_root + "/warriors/legomoreno.jpg", 50, 5, 3, 6, 5, 3, 20));
-        WarriorContainer.warriorArrayList.add(new Warrior("Roferolas Elfbrooks", Main.resource_root + "/warriors/roferolas.jpg", 50, 5, 3, 6, 5, 3, 20));
-        WarriorContainer.warriorArrayList.add(new Warrior("Maol-Chaluim Maoileanach", Main.resource_root + "/warriors/maol-chaluim.jpg", 40, 4, 2, 7, 7, 2, 19));
-        WarriorContainer.warriorArrayList.add(new Warrior("Gillìosa Fòlais", Main.resource_root + "/warriors/gilliosa.jpg", 40, 4, 2, 7, 7, 2, 19));
-        WarriorContainer.warriorArrayList.add(new Warrior("Seumas Forsàidh", Main.resource_root + "/warriors/seumas.jpg", 40, 4, 2, 7, 7, 2, 19));
-        // ADD to container all weapons
-        WeaponContainer.weaponArrayList.add(new Weapon(3, 0, Main.resource_root + "/weapons/dagger.jpg", "Dagger", 10)); // Dagger
-        WeaponContainer.weaponArrayList.add(new Weapon(1, 1, Main.resource_root + "/weapons/sword.jpg", "Sword", 10)); // Sword
-        WeaponContainer.weaponArrayList.add(new Weapon(3, 0, Main.resource_root + "/weapons/axe.png", "Axe", 10)); // Axe
-        WeaponContainer.weaponArrayList.add(new Weapon(2, 2, Main.resource_root + "/weapons/twinSwords.jpg", "TwinSwords", 14)); // TwinSwords
-        WeaponContainer.weaponArrayList.add(new Weapon(1, 2, Main.resource_root + "/weapons/scimitar.jpg", "Scimitar", 14)); // Scimitar
-        WeaponContainer.weaponArrayList.add(new Weapon(1, 5, Main.resource_root + "/weapons/bow.jpg", "Bow", 15)); // Bow
-        WeaponContainer.weaponArrayList.add(new Weapon(2, 3, Main.resource_root + "/weapons/katana.jpg", "Katana", 18)); // Katana
-        WeaponContainer.weaponArrayList.add(new Weapon(0, 4, Main.resource_root + "/weapons/knife.jpg", "Knife", 12)); // Knife
-        WeaponContainer.weaponArrayList.add(new Weapon(5, 0, Main.resource_root + "/weapons/twoHandedAxe.jpg", "TwoHandedAxe", 20)); // TwoHandedAxe
+            Object obj = playerParser.parse(reader);
+            JSONArray playerList = (JSONArray) obj;
+            playerList.forEach(emp -> parsePlayerObject((JSONObject) emp));
+        } catch (IOException | ParseException ignored) {
+        }
+        // Import JSON that contains the warriors
+        JSONParser warriorParser = new JSONParser();
+        try (FileReader reader = new FileReader("warriors.json")) {
+            Object obj = warriorParser.parse(reader);
+            JSONArray warriorList = (JSONArray) obj;
+            warriorList.forEach(emp -> parseWarriorObject((JSONObject) emp));
+        } catch (IOException | ParseException ignored) {
+        }
+        // Import JSON that contains the weapons
+        JSONParser weaponParser = new JSONParser();
+        try (FileReader reader = new FileReader("weapons.json")) {
+            Object obj = weaponParser.parse(reader);
+            JSONArray weaponList = (JSONArray) obj;
+            weaponList.forEach(emp -> parseWeaponObject((JSONObject) emp));
+        } catch (IOException | ParseException ignored) {
+        }
     }
 
-    private static void parsePlayerObject(JSONObject player)
-    {
-        JSONObject employeeObject = (JSONObject) player.get("player");
-        String name = (String) employeeObject.get("name");
-        String password = (String) employeeObject.get("password");
-        double points = (double) employeeObject.get("points");
-        double won = (double) employeeObject.get("won");
-        double lost = (double) employeeObject.get("lost");
-        PlayerContainer.playerArrayList.add(new Player(name, password, new BigDecimal(points).floatValue(), new BigDecimal(won).floatValue(), new BigDecimal(lost).floatValue()));
+    // Parse Player object
+    private static void parsePlayerObject(JSONObject player) {
+        try {
+            for (int i = 1; i < Double.POSITIVE_INFINITY; i++) {
+                JSONObject playerObject = (JSONObject) player.get("player" + i);
+                String name = (String) playerObject.get("name");
+                String password = (String) playerObject.get("password");
+                double points = (double) playerObject.get("points");
+                double won = (double) playerObject.get("won");
+                double lost = (double) playerObject.get("lost");
+                PlayerContainer.playerArrayList.add(new Player(name, password, new BigDecimal(points).floatValue(), new BigDecimal(won).floatValue(), new BigDecimal(lost).floatValue()));
+            }
+        } catch (NullPointerException ignored) {
+        }
     }
 
+    // Parse Warrior object
+    private static void parseWarriorObject(JSONObject warrior) {
+        for (int i = 0; i < 9; i++) {
+            JSONObject warriorObject = (JSONObject) warrior.get("warrior" + i);
+            String name = (String) warriorObject.get("name");
+            String url = (String) warriorObject.get("url");
+            long life = (long) warriorObject.get("life");
+            long strength = (long) warriorObject.get("strength");
+            long defense = (long) warriorObject.get("defense");
+            long agility = (long) warriorObject.get("agility");
+            long speed = (long) warriorObject.get("speed");
+            long race_id = (long) warriorObject.get("race_id");
+            long points = (long) warriorObject.get("points");
+            WarriorContainer.warriorArrayList.add(new Warrior(
+                    name,
+                    url,
+                    new BigDecimal(life).intValue(),
+                    new BigDecimal(strength).intValue(),
+                    new BigDecimal(defense).intValue(),
+                    new BigDecimal(agility).intValue(),
+                    new BigDecimal(speed).intValue(),
+                    new BigDecimal(race_id).intValue(),
+                    new BigDecimal(points).intValue()
+            ));
+        }
+    }
+
+    // Parse Weapon object
+    private static void parseWeaponObject(JSONObject weapon) {
+        for (int i = 0; i < 9; i++) {
+            JSONObject weaponObject = (JSONObject) weapon.get("weapon" + i);
+            String name = (String) weaponObject.get("name");
+            String url = (String) weaponObject.get("url");
+            long points = (long) weaponObject.get("points");
+            long speed = (long) weaponObject.get("speed");
+            long strength = (long) weaponObject.get("strength");
+            WeaponContainer.weaponArrayList.add(new Weapon(
+                    new BigDecimal(strength).intValue(),
+                    new BigDecimal(speed).intValue(),
+                    url,
+                    name,
+                    new BigDecimal(points).intValue()
+            ));
+        }
+    }
+
+    // Function to add players to DB
     public static void addPlayerDB(Player player) throws SQLException, ClassNotFoundException, NullPointerException {
         int next_id = 0;
         Statement stmnt = connection.createStatement();
@@ -110,7 +157,7 @@ public class Events {
         PreparedStatement ps = connection.prepareStatement(update);
 
         ResultSet rs = stmnt.executeQuery("select player_id from players order by player_id limit 1");
-        if (rs.next()){
+        if (rs.next()) {
             next_id = rs.getInt(1);
         }
         next_id = next_id + 1;
@@ -124,40 +171,26 @@ public class Events {
         ps.executeUpdate();
     }
 
-    public static void setLostDB(int lost) {
-        // TODO: 5/18/21
-    }
-
-    public static void setWonDB(int won) {
-        // TODO: 5/18/21
-    }
-
-    public static void setPointsDB(int points) {
-        // TODO: 5/18/21
-    }
-
+    // Function to add players to JSON file
     public static void addPlayerNoDB(Player player) {
-        //First Employee
-        JSONObject playerDetails = new JSONObject();
-        playerDetails.put("name", player.getName());
-        playerDetails.put("password", player.getPassword());
-        playerDetails.put("points", player.getPoints());
-        playerDetails.put("won", player.getWon());
-        playerDetails.put("lost", player.getLost());
-
-        JSONObject playerObject = new JSONObject();
-        playerObject.put("player", playerDetails);
-
-        //Add employees to list
-        JSONArray playerList = new JSONArray();
-        playerList.add(playerObject);
-
-        //Write JSON file
-        try (FileWriter file = new FileWriter("users.json")) {
-            //We can write any JSONArray or JSONObject instance to the file
-            file.write(playerList.toJSONString());
+        JSONParser jsonParser = new JSONParser();
+        try {
+            Object obj = jsonParser.parse(new FileReader("users.json"));
+            JSONArray jsonArray = (JSONArray) obj;
+            JSONObject playerDetails = new JSONObject();
+            playerDetails.put("name", player.getName());
+            playerDetails.put("password", player.getPassword());
+            playerDetails.put("points", player.getPoints());
+            playerDetails.put("won", player.getWon());
+            playerDetails.put("lost", player.getLost());
+            JSONObject playerObject = new JSONObject();
+            playerObject.put("player" + PlayerContainer.playerArrayList.size(), playerDetails);
+            jsonArray.add(playerObject);
+            FileWriter file = new FileWriter("users.json");
+            file.write(jsonArray.toJSONString());
             file.flush();
-        } catch (IOException e) {
+            file.close();
+        } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
     }
