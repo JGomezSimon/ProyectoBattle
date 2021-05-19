@@ -4,17 +4,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
+    public static Logger logger = Logger.getLogger(Main.class.getName());
+    public static String resource_root = "src/main/resources";
+    public static Player player;
     public static JFrame loginPanel;
     public static JFrame mainPanel;
     public static JFrame weaponPanel;
     public static JFrame warriorPanel;
     public static JFrame battlePanel;
     public static JFrame rankingPanel;
-    public static Logger logger = Logger.getLogger(Main.class.getName());
-    public static String resource_root = "src/main/resources";
 
     public static void main(String[] args) {
-        Events.CreateJSON();
+        Events.CreateJSON("users");
         // Try import DB if fail, do it manually
         try {
             Events.importDB();

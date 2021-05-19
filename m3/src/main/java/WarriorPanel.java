@@ -84,7 +84,7 @@ public class WarriorPanel extends MainPanel {
         });
     }
     void finishPanel(int id) {
-        LoginPanel.player.setWarrior(WarriorContainer.warriorArrayList.get(id));
+        Main.player.setWarrior(WarriorContainer.warriorArrayList.get(id));
         Main.logger.log(Level.INFO, "The player have choose " + WarriorContainer.warriorArrayList.get(id).getName() + " [warrior]");
         try {
             Main.weaponPanel = new WeaponPanel();

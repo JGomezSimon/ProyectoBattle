@@ -44,7 +44,7 @@ public class MainPanel extends JFrame{
             Main.warriorPanel.setVisible(true);
         });
         confirmarButton.addActionListener(actionEvent -> {
-            if (LoginPanel.player.getWarrior() != null) {
+            if (Main.player.getWarrior() != null) {
                 escogerArmaButton.setEnabled(true);
                 escogerPersonajeButton.setEnabled(false);
                 confirmarButton.setEnabled(false);
@@ -54,7 +54,7 @@ public class MainPanel extends JFrame{
             }
         });
         confirmarButton1.addActionListener(actionEvent -> {
-            if (LoginPanel.player.getWarrior().getWeapon() != null) {
+            if (Main.player.getWarrior().getWeapon() != null) {
                 escogerArmaButton.setEnabled(false);
                 jugarButton.setEnabled(true);
                 confirmarButton1.setEnabled(false);

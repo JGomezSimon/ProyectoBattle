@@ -3,7 +3,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.logging.Level;
@@ -12,9 +15,10 @@ public class Events {
 
     private static Connection connection;
 
-    public static void CreateJSON() {
+    // Function to create json files
+    public static void CreateJSON(String name) {
         try {
-            File myObj = new File("users.json");
+            File myObj = new File(name + ".json");
             if (myObj.createNewFile()) {
                 Main.logger.log(Level.INFO, "File created: " + myObj.getName());
             } else {

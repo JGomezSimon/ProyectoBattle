@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 
 public class LoginPanel extends MainPanel {
-    public static Player player;
     private JPasswordField passwordField1;
     private JTextArea NameArea;
     private JButton registerButton;
@@ -34,7 +33,7 @@ public class LoginPanel extends MainPanel {
             if (flag) {
                 if (PlayerContainer.playerArrayList.get(id).getPassword().equals(new String(passwordField1.getPassword()))) {
                     this.dispose();
-                    player = PlayerContainer.playerArrayList.get(id);
+                    Main.player = PlayerContainer.playerArrayList.get(id);
                     // Initialize MainPanel and WarriorPanel
                     Main.mainPanel = new MainPanel();
                     Main.mainPanel.setVisible(true);

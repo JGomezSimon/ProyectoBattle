@@ -21,7 +21,7 @@ public class WeaponPanel extends MainPanel {
         this.pack();
         this.setLocationRelativeTo(null);
 
-        switch (LoginPanel.player.getWarrior().getRace_id()) {
+        switch (Main.player.getWarrior().getRace_id()) {
             case 1: // Enano
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(2).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(7).getName());
@@ -90,7 +90,7 @@ public class WeaponPanel extends MainPanel {
         });
     }
     void finishPanel(int id) {
-        LoginPanel.player.getWarrior().setWeapon(WeaponContainer.weaponArrayList.get(id));
+        Main.player.getWarrior().setWeapon(WeaponContainer.weaponArrayList.get(id));
         Main.logger.log(Level.INFO, "The player have choose " + WeaponContainer.weaponArrayList.get(id).getName() + " [weapon]");
         this.setVisible(false);
         Main.mainPanel.setVisible(true);
