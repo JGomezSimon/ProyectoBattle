@@ -1,13 +1,14 @@
 public class Weapon {
     String url, name;
-    int speed, strength, points;
+    int speed, strength, points, weId;
 
-    public Weapon(int strength, int speed, String url, String name, int points) {
+    public Weapon(int strength, int speed, String url, String name, int points, int weId) {
         this.speed = speed;
         this.strength = strength;
         this.url = url;
         this.name = name;
         this.points = points;
+        this.weId = weId;
     }
 
     public int getPoints() {
@@ -30,4 +31,9 @@ public class Weapon {
         return url;
     }
 
+    public int getWeId() { return weId;
+    }
+
+    public void setWeId(int weId) { this.weId = weId;
+    }
 }

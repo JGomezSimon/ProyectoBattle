@@ -5,6 +5,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Random;
 import java.util.logging.Level;
 
@@ -104,6 +105,11 @@ public class BattlePanel extends MainPanel {
         namePlayer.setText(Main.player.getWarrior().getName() + " [You]");
         nameCPU.setText(cpu.getName() + " [CPU]");
 
+        //Add into player class the enemy Weapon_Id and Warrior_Id
+        Main.player.setOpoId(cpu.getWaId());
+        Main.player.setWepId(cpu.getWeapon().getWeId());
+
+
         int totalLifeCPU = cpu.getLife();
         int totalLifePlayer = cpu.getLife();
 
@@ -171,20 +177,27 @@ public class BattlePanel extends MainPanel {
         }
 
         fightButton.addActionListener(actionEvent -> {
-            if (battle(defender, attacker, random)) {
-                if (battle(attacker, defender, random)) {
-                    // Update Life of the bars
-                    progressBar5B.setValue(cpu.getLife());
-                    progressBar5A.setValue(Main.player.getWarrior().getLife());
-                    if (cpu.getLife() <= totalLifeCPU * 0.2) {
-                        progressBar5B.setForeground(Color.RED);
-                    } else if (cpu.getLife() <= totalLifeCPU * 0.6) {
-                        progressBar5B.setForeground(Color.YELLOW);
-                    }
-                    if (Main.player.getWarrior().getLife() <= totalLifePlayer * 0.2) {
-                        progressBar5A.setForeground(Color.RED);
-                    } else if (Main.player.getWarrior().getLife() <= totalLifePlayer * 0.6) {
-                        progressBar5A.setForeground(Color.YELLOW);
+            try {
+                if (battle(defender, attacker, random)) {
+                    if (battle(attacker, defender, random)) {
+                        // Update Life of the bars
+                        progressBar5B.setValue(cpu.getLife());
+                        progressBar5A.setValue(Main.player.getWarrior().getLife());
+                        if (cpu.getLife() <= totalLifeCPU * 0.2) {
+                            progressBar5B.setForeground(Color.RED);
+                        } else if (cpu.getLife() <= totalLifeCPU * 0.6) {
+                            progressBar5B.setForeground(Color.YELLOW);
+                        }
+                        if (Main.player.getWarrior().getLife() <= totalLifePlayer * 0.2) {
+                            progressBar5A.setForeground(Color.RED);
+                        } else if (Main.player.getWarrior().getLife() <= totalLifePlayer * 0.6) {
+                            progressBar5A.setForeground(Color.YELLOW);
+                        }
+                    } else {
+                        // finish turn
+                        Main.player.getWarrior().setLife(totalLifePlayer);
+                        cpu.setLife(totalLifeCPU);
+                        jDialog.setVisible(true);
                     }
                 } else {
                     // finish turn
@@ -192,17 +205,16 @@ public class BattlePanel extends MainPanel {
                     cpu.setLife(totalLifeCPU);
                     jDialog.setVisible(true);
                 }
-            } else {
-                // finish turn
-                Main.player.getWarrior().setLife(totalLifePlayer);
-                cpu.setLife(totalLifeCPU);
-                jDialog.setVisible(true);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
         });
         clearConsoleButton.addActionListener(actionEvent -> textArea1.setText(null));
     }
 
-    boolean battle(Warrior defender, Warrior attacker, Random random) {
+    boolean battle(Warrior defender, Warrior attacker, Random random) throws SQLException, ClassNotFoundException {
         boolean salir = true;
         while (salir) {
             if (random.nextInt(99) + 1 > defender.getAgility() * 10) {

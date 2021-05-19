@@ -1,3 +1,5 @@
+import java.sql.SQLException;
+
 public class Player {
     String name, password;
     float points, won, lost;
@@ -39,7 +41,7 @@ public class Player {
         return points;
     }
 
-    public void setPoints(int points) {
+    public void setPoints(int points) throws SQLException {
         this.points = points;
         Events.setPointsDB(points);
     }
@@ -48,7 +50,7 @@ public class Player {
         return won;
     }
 
-    public void setWon(int won) {
+    public void setWon(int won) throws SQLException, ClassNotFoundException {
         this.won = won;
         Events.setWonDB(won);
     }
@@ -57,7 +59,7 @@ public class Player {
         return lost;
     }
 
-    public void setLost(int lost) {
+    public void setLost(int lost) throws SQLException {
         this.lost = lost;
         Events.setLostDB(lost);
     }

@@ -40,7 +40,7 @@ public class Events {
         ResultSet rs = stmnt.executeQuery(query);
 
         while (rs.next()) {
-            WeaponContainer.weaponArrayList.add(new Weapon(rs.getInt(5), rs.getInt(4), rs.getString(3), rs.getString(2), rs.getInt(6)));
+            WeaponContainer.weaponArrayList.add(new Weapon(rs.getInt(5), rs.getInt(4), rs.getString(3), rs.getString(2), rs.getInt(6), rs.getInt(1)));
         }
 
         // Loop to check if elements have been introduced into the class
@@ -48,14 +48,14 @@ public class Events {
         rs = stmnt.executeQuery(query);
 
         while (rs.next()) {
-            WarriorContainer.warriorArrayList.add(new Warrior(rs.getString(2), rs.getString(3), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(4), rs.getInt(10)));
+            WarriorContainer.warriorArrayList.add(new Warrior(rs.getString(2), rs.getString(3), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(4), rs.getInt(10),rs.getInt(1)));
         }
 
         query = "select * from players";
         rs = stmnt.executeQuery(query);
 
         while (rs.next()) {
-            PlayerContainer.playerArrayList.add(new Player(rs.getString(2), rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6)));
+            PlayerContainer.playerArrayList.add(new Player(rs.getString(2), rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6), rs.getInt(1)));
         }
     }
 
@@ -170,6 +170,61 @@ public class Events {
         ps.setInt(6, 0);
         ps.executeUpdate();
     }
+
+    // Function to sum losses into players
+    public static void setLostDB(int lost) throws SQLException {
+        int id = 0;
+
+        String setLosses = "update players set losses = ? where player_id = ?";
+        PreparedStatement ps = connection.prepareStatement(setLosses);
+        ps.setInt(1, lost);
+        ps.setInt(2, Main.player.getpId());
+        ps.executeUpdate();
+    }
+
+    // Function to sum wins into player
+    public static void setWonDB(int won) throws SQLException, ClassNotFoundException {
+        String setLosses = "update players set wins = ? where player_id = ?";
+        PreparedStatement ps = connection.prepareStatement(setLosses);
+        ps.setInt(1, won);
+        ps.setInt(2, Main.player.getpId());
+        ps.executeUpdate();
+    }
+
+    // Function to sum up points into points
+    public static void setPointsDB(int points) throws SQLException {
+        String setLosses = "update players set points = ? where player_id = ?";
+        PreparedStatement ps = connection.prepareStatement(setLosses);
+        ps.setInt(1, points);
+        ps.setInt(2, Main.player.getpId());
+        ps.executeUpdate();
+    }
+    // Function to save the most recent battle into the Database
+    public static void saveBattle() throws SQLException{
+        int next_id = 0;
+        Statement stmnt = connection.createStatement();
+
+        ResultSet rs = stmnt.executeQuery("select battle_id from battles order by battle_id limit 1");
+        if (rs.next()){
+            next_id = rs.getInt(1);
+        }
+        next_id = next_id + 1;
+
+        String battleInsert = "insert into battles(battle_id,player_id,warrior_id,warrior_weapon_id,oponent_id,oponent_weapon_id,injuries_caused,injuries_suffered,battle_points) values (?,?,?,?,?,?,?,?,?)";
+        PreparedStatement ps = connection.prepareStatement(battleInsert);
+
+        ps.setInt(1,next_id);
+        ps.setInt(2,Main.player.getpId());
+        ps.setInt(3,Main.player.getWarrior().getWaId());
+        ps.setInt(4,Main.player.warrior.getWeapon().getWeId());
+        ps.setInt(5,Main.player.getOpoId());
+        ps.setInt(6,Main.player.getWepId());
+        ps.setInt(7,Main.player.getWarrior().getLife());
+        ps.setInt(8,Main.player.getHp());
+        ps.setInt(9,Main.player.warrior.getPoints() + Main.player.warrior.weapon.getPoints());
+        ps.executeUpdate();
+    }
+
 
     // Function to add players to JSON file
     public static void addPlayerNoDB(Player player) {
