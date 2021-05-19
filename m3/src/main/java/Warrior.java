@@ -3,7 +3,7 @@ public class Warrior {
     Weapon weapon;
     int life, strength, defense, agility, speed, race_id, points, waId;
 
-    public Warrior(String name, String url, int life, int strength, int defense, int agility, int speed, int race_id, int points, int waId) {
+    public Warrior(String name, String url, int life, int strength, int defense, int agility, int speed, int race_id, int points) {
         this.name = name;
         this.url = url;
         this.life = life;
@@ -13,7 +13,6 @@ public class Warrior {
         this.speed = speed;
         this.race_id = race_id;
         this.points = points;
-        this.waId = waId;
     }
 
 

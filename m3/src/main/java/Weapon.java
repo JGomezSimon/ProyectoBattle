@@ -2,7 +2,7 @@ public class Weapon {
     String url, name;
     int speed, strength, points, weId;
 
-    public Weapon(int strength, int speed, String url, String name, int points, int weId) {
+    public Weapon(int strength, int speed, String url, String name, int points) {
         this.speed = speed;
         this.strength = strength;
         this.url = url;

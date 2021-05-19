@@ -21,6 +21,12 @@ public class Events {
             File myObj = new File(name + ".json");
             if (myObj.createNewFile()) {
                 Main.logger.log(Level.INFO, "File created: " + myObj.getName());
+                if (name.equals("users")) {
+                    FileWriter file = new FileWriter("users.json");
+                    file.write("[]");
+                    file.flush();
+                    file.close();
+                }
             } else {
                 Main.logger.log(Level.INFO, "File already exists.");
             }
@@ -40,7 +46,9 @@ public class Events {
         ResultSet rs = stmnt.executeQuery(query);
 
         while (rs.next()) {
-            WeaponContainer.weaponArrayList.add(new Weapon(rs.getInt(5), rs.getInt(4), rs.getString(3), rs.getString(2), rs.getInt(6), rs.getInt(1)));
+            Weapon weapon_cache = new Weapon(rs.getInt(5), rs.getInt(4), rs.getString(3), rs.getString(2), rs.getInt(6));
+            weapon_cache.setWeId(rs.getInt(1));
+            WeaponContainer.weaponArrayList.add(weapon_cache);
         }
 
         // Loop to check if elements have been introduced into the class
@@ -48,14 +56,18 @@ public class Events {
         rs = stmnt.executeQuery(query);
 
         while (rs.next()) {
-            WarriorContainer.warriorArrayList.add(new Warrior(rs.getString(2), rs.getString(3), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(4), rs.getInt(10),rs.getInt(1)));
+            Warrior warrior_cache = new Warrior(rs.getString(2), rs.getString(3), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(4), rs.getInt(10));
+            warrior_cache.setWaId(rs.getInt(1));
+            WarriorContainer.warriorArrayList.add(warrior_cache);
         }
 
         query = "select * from players";
         rs = stmnt.executeQuery(query);
 
         while (rs.next()) {
-            PlayerContainer.playerArrayList.add(new Player(rs.getString(2), rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6), rs.getInt(1)));
+            Player player_cache = new Player(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6));
+            player_cache.setpId(rs.getInt(1));
+            PlayerContainer.playerArrayList.add(player_cache);
         }
     }
 
@@ -88,64 +100,61 @@ public class Events {
 
     // Parse Player object
     private static void parsePlayerObject(JSONObject player) {
-        try {
-            for (int i = 1; i < Double.POSITIVE_INFINITY; i++) {
-                JSONObject playerObject = (JSONObject) player.get("player" + i);
-                String name = (String) playerObject.get("name");
-                String password = (String) playerObject.get("password");
-                double points = (double) playerObject.get("points");
-                double won = (double) playerObject.get("won");
-                double lost = (double) playerObject.get("lost");
-                PlayerContainer.playerArrayList.add(new Player(name, password, new BigDecimal(points).floatValue(), new BigDecimal(won).floatValue(), new BigDecimal(lost).floatValue()));
-            }
-        } catch (NullPointerException ignored) {
-        }
+        JSONObject playerObject = (JSONObject) player.get("player");
+        String name = (String) playerObject.get("name");
+        String password = (String) playerObject.get("password");
+        double points = (double) playerObject.get("points");
+        double won = (double) playerObject.get("won");
+        double lost = (double) playerObject.get("lost");
+        PlayerContainer.playerArrayList.add(new Player(
+                name,
+                password,
+                new BigDecimal(points).floatValue(),
+                new BigDecimal(won).floatValue(),
+                new BigDecimal(lost).floatValue()
+        ));
     }
 
     // Parse Warrior object
     private static void parseWarriorObject(JSONObject warrior) {
-        for (int i = 0; i < 9; i++) {
-            JSONObject warriorObject = (JSONObject) warrior.get("warrior" + i);
-            String name = (String) warriorObject.get("name");
-            String url = (String) warriorObject.get("url");
-            long life = (long) warriorObject.get("life");
-            long strength = (long) warriorObject.get("strength");
-            long defense = (long) warriorObject.get("defense");
-            long agility = (long) warriorObject.get("agility");
-            long speed = (long) warriorObject.get("speed");
-            long race_id = (long) warriorObject.get("race_id");
-            long points = (long) warriorObject.get("points");
-            WarriorContainer.warriorArrayList.add(new Warrior(
-                    name,
-                    url,
-                    new BigDecimal(life).intValue(),
-                    new BigDecimal(strength).intValue(),
-                    new BigDecimal(defense).intValue(),
-                    new BigDecimal(agility).intValue(),
-                    new BigDecimal(speed).intValue(),
-                    new BigDecimal(race_id).intValue(),
-                    new BigDecimal(points).intValue()
-            ));
-        }
+        JSONObject warriorObject = (JSONObject) warrior.get("warrior");
+        String name = (String) warriorObject.get("name");
+        String url = (String) warriorObject.get("url");
+        long life = (long) warriorObject.get("life");
+        long strength = (long) warriorObject.get("strength");
+        long defense = (long) warriorObject.get("defense");
+        long agility = (long) warriorObject.get("agility");
+        long speed = (long) warriorObject.get("speed");
+        long race_id = (long) warriorObject.get("race_id");
+        long points = (long) warriorObject.get("points");
+        WarriorContainer.warriorArrayList.add(new Warrior(
+                name,
+                url,
+                new BigDecimal(life).intValue(),
+                new BigDecimal(strength).intValue(),
+                new BigDecimal(defense).intValue(),
+                new BigDecimal(agility).intValue(),
+                new BigDecimal(speed).intValue(),
+                new BigDecimal(race_id).intValue(),
+                new BigDecimal(points).intValue()
+        ));
     }
 
     // Parse Weapon object
     private static void parseWeaponObject(JSONObject weapon) {
-        for (int i = 0; i < 9; i++) {
-            JSONObject weaponObject = (JSONObject) weapon.get("weapon" + i);
-            String name = (String) weaponObject.get("name");
-            String url = (String) weaponObject.get("url");
-            long points = (long) weaponObject.get("points");
-            long speed = (long) weaponObject.get("speed");
-            long strength = (long) weaponObject.get("strength");
-            WeaponContainer.weaponArrayList.add(new Weapon(
-                    new BigDecimal(strength).intValue(),
-                    new BigDecimal(speed).intValue(),
-                    url,
-                    name,
-                    new BigDecimal(points).intValue()
-            ));
-        }
+        JSONObject weaponObject = (JSONObject) weapon.get("weapon");
+        String name = (String) weaponObject.get("name");
+        String url = (String) weaponObject.get("url");
+        long points = (long) weaponObject.get("points");
+        long speed = (long) weaponObject.get("speed");
+        long strength = (long) weaponObject.get("strength");
+        WeaponContainer.weaponArrayList.add(new Weapon(
+                new BigDecimal(strength).intValue(),
+                new BigDecimal(speed).intValue(),
+                url,
+                name,
+                new BigDecimal(points).intValue()
+        ));
     }
 
     // Function to add players to DB
@@ -173,8 +182,6 @@ public class Events {
 
     // Function to sum losses into players
     public static void setLostDB(int lost) throws SQLException {
-        int id = 0;
-
         String setLosses = "update players set losses = ? where player_id = ?";
         PreparedStatement ps = connection.prepareStatement(setLosses);
         ps.setInt(1, lost);
@@ -216,15 +223,25 @@ public class Events {
         ps.setInt(1,next_id);
         ps.setInt(2,Main.player.getpId());
         ps.setInt(3,Main.player.getWarrior().getWaId());
-        ps.setInt(4,Main.player.warrior.getWeapon().getWeId());
-        ps.setInt(5,Main.player.getOpoId());
-        ps.setInt(6,Main.player.getWepId());
-        ps.setInt(7,Main.player.getWarrior().getLife());
-        ps.setInt(8,Main.player.getHp());
-        ps.setInt(9,Main.player.warrior.getPoints() + Main.player.warrior.weapon.getPoints());
+        ps.setInt(4, Main.player.warrior.getWeapon().getWeId());
+        ps.setInt(5, Main.player.getOpoId());
+        ps.setInt(6, Main.player.getWepId());
+        ps.setInt(7, Main.player.getWarrior().getLife());
+        ps.setInt(8, Main.player.getHp());
+        ps.setInt(9, Main.player.warrior.getPoints() + Main.player.warrior.weapon.getPoints());
         ps.executeUpdate();
     }
 
+
+    public static void modifyPlayers() throws IOException {
+        FileWriter file = new FileWriter("users.json");
+        file.write("[]");
+        file.flush();
+        file.close();
+        for (Player i : PlayerContainer.playerArrayList) {
+            Events.addPlayerNoDB(i);
+        }
+    }
 
     // Function to add players to JSON file
     public static void addPlayerNoDB(Player player) {
@@ -239,7 +256,7 @@ public class Events {
             playerDetails.put("won", player.getWon());
             playerDetails.put("lost", player.getLost());
             JSONObject playerObject = new JSONObject();
-            playerObject.put("player" + PlayerContainer.playerArrayList.size(), playerDetails);
+            playerObject.put("player", playerDetails);
             jsonArray.add(playerObject);
             FileWriter file = new FileWriter("users.json");
             file.write(jsonArray.toJSONString());

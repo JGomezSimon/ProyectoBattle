@@ -6,13 +6,24 @@ public class Player {
     int hp, pId, wepId, opoId;
     Warrior warrior;
 
-    public Player(String name, String password, float points, float win, float lost, int pId) {
+    public Player(String name, String password, float points, float win, float lost) {
         this.name = name;
         this.points = points;
         this.won = win;
         this.lost = lost;
         this.password = password;
-        this.pId = pId;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", points=" + points +
+                ", won=" + won +
+                ", lost=" + lost +
+                ", warrior=" + warrior +
+                '}';
     }
 
     public Warrior getWarrior() {
@@ -43,27 +54,37 @@ public class Player {
         return points;
     }
 
-    public void setPoints(int points) throws SQLException {
+    public void setPoints(int points) {
         this.points = points;
-        Events.setPointsDB(points);
+        try {
+            Events.setPointsDB(points);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public float getWon() {
         return won;
     }
 
-    public void setWon(int won) throws SQLException, ClassNotFoundException {
+    public void setWon(int won) {
         this.won = won;
-        Events.setWonDB(won);
+        try {
+            Events.setWonDB(won);
+        } catch (SQLException | ClassNotFoundException ignored) {
+        }
     }
 
     public float getLost() {
         return lost;
     }
 
-    public void setLost(int lost) throws SQLException {
+    public void setLost(int lost) {
         this.lost = lost;
-        Events.setLostDB(lost);
+        try {
+            Events.setLostDB(lost);
+        } catch (SQLException ignored) {
+        }
     }
 
     public int getpId() {

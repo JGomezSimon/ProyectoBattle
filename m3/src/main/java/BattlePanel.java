@@ -177,7 +177,6 @@ public class BattlePanel extends MainPanel {
         }
 
         fightButton.addActionListener(actionEvent -> {
-            try {
                 if (battle(defender, attacker, random)) {
                     if (battle(attacker, defender, random)) {
                         // Update Life of the bars
@@ -205,16 +204,11 @@ public class BattlePanel extends MainPanel {
                     cpu.setLife(totalLifeCPU);
                     jDialog.setVisible(true);
                 }
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
         });
         clearConsoleButton.addActionListener(actionEvent -> textArea1.setText(null));
     }
 
-    boolean battle(Warrior defender, Warrior attacker, Random random) throws SQLException, ClassNotFoundException {
+    boolean battle(Warrior defender, Warrior attacker, Random random) {
         boolean salir = true;
         while (salir) {
             if (random.nextInt(99) + 1 > defender.getAgility() * 10) {
@@ -244,7 +238,14 @@ public class BattlePanel extends MainPanel {
                     Main.logger.log(Level.INFO, "The player lost the game");
                     Main.player.setLost((int) (Main.player.getLost() + 1));
                 }
-                Events.addPlayerNoDB(Main.player);
+                try {
+                    Events.saveBattle();
+                } catch (SQLException throwables) {
+                    try {
+                        Events.modifyPlayers();
+                    } catch (IOException ignored) {
+                    }
+                }
                 return false;
             }
             if (attacker.getSpeed() <= defender.getSpeed()) {

@@ -1,6 +1,6 @@
 [
   {
-    "player1": {
+    "player": {
       "password": "1234",
       "lost": 0.0,
       "won": 0.0,
@@ -9,12 +9,12 @@
     }
   },
   {
-    "player2": {
+    "player": {
       "password": "1234",
       "lost": 0.0,
-      "won": 0.0,
+      "won": 1.0,
       "name": "pepe",
-      "points": 0.0
+      "points": 35.0
     }
   }
 ]

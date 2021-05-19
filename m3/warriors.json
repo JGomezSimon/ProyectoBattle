@@ -1,6 +1,6 @@
 [
   {
-    "warrior0": {
+    "warrior": {
       "strength": 6,
       "defense": 4,
       "race_id": 1,
@@ -10,8 +10,10 @@
       "life": 60,
       "speed": 3,
       "points": 21
-    },
-    "warrior1": {
+    }
+  },
+  {
+    "warrior": {
       "strength": 6,
       "defense": 4,
       "race_id": 1,
@@ -21,8 +23,10 @@
       "life": 60,
       "speed": 3,
       "points": 21
-    },
-    "warrior2": {
+    }
+  },
+  {
+    "warrior": {
       "strength": 6,
       "defense": 4,
       "race_id": 1,
@@ -32,8 +36,10 @@
       "life": 60,
       "speed": 3,
       "points": 21
-    },
-    "warrior3": {
+    }
+  },
+  {
+    "warrior": {
       "strength": 5,
       "defense": 3,
       "race_id": 3,
@@ -43,8 +49,10 @@
       "life": 50,
       "speed": 5,
       "points": 20
-    },
-    "warrior4": {
+    }
+  },
+  {
+    "warrior": {
       "strength": 5,
       "defense": 3,
       "race_id": 3,
@@ -54,8 +62,10 @@
       "life": 50,
       "speed": 5,
       "points": 20
-    },
-    "warrior5": {
+    }
+  },
+  {
+    "warrior": {
       "strength": 5,
       "defense": 3,
       "race_id": 3,
@@ -65,8 +75,10 @@
       "life": 50,
       "speed": 5,
       "points": 20
-    },
-    "warrior6": {
+    }
+  },
+  {
+    "warrior": {
       "strength": 4,
       "defense": 2,
       "race_id": 2,
@@ -76,8 +88,10 @@
       "life": 40,
       "speed": 7,
       "points": 19
-    },
-    "warrior7": {
+    }
+  },
+  {
+    "warrior": {
       "strength": 4,
       "defense": 2,
       "race_id": 2,
@@ -87,8 +101,10 @@
       "life": 40,
       "speed": 7,
       "points": 19
-    },
-    "warrior8": {
+    }
+  },
+  {
+    "warrior": {
       "strength": 4,
       "defense": 2,
       "race_id": 2,
