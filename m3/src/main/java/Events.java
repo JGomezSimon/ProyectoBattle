@@ -180,7 +180,7 @@ public class Events {
         ps.executeUpdate();
     }
 
-    // Function to sum losses into players
+    // Function to update losses into players
     public static void setLostDB(int lost) throws SQLException, NullPointerException {
         String setLosses = "update players set losses = ? where player_id = ?";
         PreparedStatement ps = connection.prepareStatement(setLosses);
@@ -189,23 +189,43 @@ public class Events {
         ps.executeUpdate();
     }
 
-    // Function to sum wins into player
+    // Function to update wins into player
     public static void setWonDB(int won) throws SQLException, ClassNotFoundException, NullPointerException {
-        String setLosses = "update players set wins = ? where player_id = ?";
-        PreparedStatement ps = connection.prepareStatement(setLosses);
+        String setWins = "update players set wins = ? where player_id = ?";
+        PreparedStatement ps = connection.prepareStatement(setWins);
         ps.setInt(1, won);
         ps.setInt(2, Main.player.getpId());
         ps.executeUpdate();
     }
 
-    // Function to sum up points into points
+    // Function to update points into players
     public static void setPointsDB(int points) throws SQLException, NullPointerException {
-        String setLosses = "update players set points = ? where player_id = ?";
-        PreparedStatement ps = connection.prepareStatement(setLosses);
+        String setPoints = "update players set points = ? where player_id = ?";
+        PreparedStatement ps = connection.prepareStatement(setPoints);
         ps.setInt(1, points);
         ps.setInt(2, Main.player.getpId());
         ps.executeUpdate();
     }
+    // Function to update Warrior_id into players
+    public static void setWarriorDB() throws SQLException{
+        String setWarrior = "update players set warrior_id = ? where player_id = ?";
+        PreparedStatement ps = connection.prepareStatement(setWarrior);
+        ps.setInt(1, Main.player.warrior.getWaId());
+        ps.setInt(2, Main.player.getpId());
+        ps.executeUpdate();
+    }
+    // Function to reset all stats after changing character
+    public static void resetStats() throws SQLException{
+        String resetStats = "update players set points = ?, wins = ?, losses = ?, warrior_id = ? where player_id = ?";
+        PreparedStatement ps = connection.prepareStatement(resetStats);
+        ps.setInt(1,0);
+        ps.setInt(2,0);
+        ps.setInt(3,0);
+        ps.setInt(4,0);
+        ps.setInt(5,Main.player.getpId());
+        ps.executeUpdate();
+    }
+
     // Function to save the most recent battle into the Database
     public static void saveBattle() throws SQLException, NullPointerException{
         int next_id = 0;
