@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 
 public class WarriorPanel extends MainPanel {
@@ -88,8 +89,23 @@ public class WarriorPanel extends MainPanel {
 
     // event when the panel is closed that sets the warrior that the player have chosen
     void finishPanel(int id) {
-        Main.player.setWarrior(WarriorContainer.warriorArrayList.get(id));
-        Main.logger.log(Level.INFO, "The player have choose " + WarriorContainer.warriorArrayList.get(id).getName() + " [warrior]");
+        if (Main.player.getWarrior() != WarriorContainer.warriorArrayList.get(id)) {
+            Main.player.setWarrior(WarriorContainer.warriorArrayList.get(id));
+            Main.logger.log(Level.INFO, "The player have choose " + WarriorContainer.warriorArrayList.get(id).getName() + " [warrior]");
+            Main.logger.log(Level.INFO, "Resetting players stats to 0");
+            Main.player.setLost(0);
+            Main.player.setWon(0);
+            Main.player.setPoints(0);
+            try {
+                Events.resetStats();
+                Events.setWarriorDB();
+            } catch (SQLException | NullPointerException throwables) {
+                try {
+                    Events.modifyPlayers();
+                } catch (IOException ignored) {
+                }
+            }
+        }
         try {
             Main.weaponPanel = new WeaponPanel();
         } catch (IOException e) {

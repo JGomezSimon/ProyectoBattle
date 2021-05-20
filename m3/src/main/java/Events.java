@@ -206,23 +206,25 @@ public class Events {
         ps.setInt(2, Main.player.getpId());
         ps.executeUpdate();
     }
+
     // Function to update Warrior_id into players
-    public static void setWarriorDB() throws SQLException{
+    public static void setWarriorDB() throws SQLException, NullPointerException {
         String setWarrior = "update players set warrior_id = ? where player_id = ?";
         PreparedStatement ps = connection.prepareStatement(setWarrior);
         ps.setInt(1, Main.player.warrior.getWaId());
         ps.setInt(2, Main.player.getpId());
         ps.executeUpdate();
     }
+
     // Function to reset all stats after changing character
-    public static void resetStats() throws SQLException{
+    public static void resetStats() throws SQLException, NullPointerException {
         String resetStats = "update players set points = ?, wins = ?, losses = ?, warrior_id = ? where player_id = ?";
         PreparedStatement ps = connection.prepareStatement(resetStats);
-        ps.setInt(1,0);
-        ps.setInt(2,0);
-        ps.setInt(3,0);
-        ps.setInt(4,0);
-        ps.setInt(5,Main.player.getpId());
+        ps.setInt(1, 0);
+        ps.setInt(2, 0);
+        ps.setInt(3, 0);
+        ps.setInt(4, 0);
+        ps.setInt(5, Main.player.getpId());
         ps.executeUpdate();
     }
 

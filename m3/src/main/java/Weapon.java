@@ -8,7 +8,6 @@ public class Weapon {
         this.url = url;
         this.name = name;
         this.points = points;
-        this.weId = weId;
     }
 
     public int getPoints() {
