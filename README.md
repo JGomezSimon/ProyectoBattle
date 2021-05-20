@@ -61,6 +61,7 @@ $ ./run.sh
 {
   "player": {
     "password":"example1234",
+    "warrior": "Nedraec Forgeshaper",
     "lost":5.0,
     "won":3.0,
     "name":"example",
