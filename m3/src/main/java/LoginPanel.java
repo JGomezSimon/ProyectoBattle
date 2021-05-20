@@ -15,7 +15,7 @@ public class LoginPanel extends MainPanel {
     private JLabel message;
 
     public LoginPanel() {
-        this.setPreferredSize(new Dimension(300, 100));
+        this.setPreferredSize(new Dimension(300, 130));
         this.setContentPane(panel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
@@ -70,7 +70,10 @@ public class LoginPanel extends MainPanel {
                     message.setText("*Register Successfully");
                     Main.logger.log(Level.INFO, "User " + NameArea.getText() + " with password " + string_pass + " created successfully");
                     Player new_player = new Player(NameArea.getText(), string_pass, 0, 0, 0);
-                    new_player.setpId(PlayerContainer.playerArrayList.size() + 1);
+                    if (PlayerContainer.playerArrayList.size() == 0)
+                        new_player.setpId(0);
+                    else
+                        new_player.setpId(PlayerContainer.playerArrayList.size() + 1);
                     PlayerContainer.playerArrayList.add(new_player);
                     try {
                         Events.addPlayerDB(new_player);

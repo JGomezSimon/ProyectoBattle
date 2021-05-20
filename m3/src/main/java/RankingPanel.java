@@ -11,7 +11,7 @@ public class RankingPanel extends JFrame {
 
     public RankingPanel() {
         super("main.project.battle");
-        this.setPreferredSize(new Dimension(460, 400));
+        this.setPreferredSize(new Dimension(520, 520));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(panel);
         this.pack();

@@ -43,7 +43,7 @@ public class BattlePanel extends MainPanel {
     JLabel labelDialog;
 
     public BattlePanel() throws IOException {
-        this.setPreferredSize(new Dimension(620, 500));
+        this.setPreferredSize(new Dimension(620, 520));
         this.setContentPane(mainPanel);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack();

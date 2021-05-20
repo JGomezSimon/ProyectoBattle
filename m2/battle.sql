@@ -35,8 +35,8 @@ CREATE TABLE players(
     wins int,
     losses int,
     warrior_id int,
-    CONSTRAINT PFK_WArrior FOREIGN KEY (warrior_id)
-		REFERENCES warriors(warrior_id)
+    CONSTRAINT PFK_WArrior foreign key (warrior_id)
+		references warriors(warrior_id)
 );
 
 CREATE TABLE weapons_available(

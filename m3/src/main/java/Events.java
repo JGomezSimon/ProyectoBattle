@@ -227,10 +227,11 @@ public class Events {
     public static void updatePlayerStatsDB() throws SQLException, NullPointerException {
         String resetStats = "update players set points = ?, wins = ?, losses = ? where player_id = ?";
         PreparedStatement ps = connection.prepareStatement(resetStats);
+        System.out.println(Main.player.getpId());
         ps.setInt(1, (int) Main.player.getPoints());
         ps.setInt(2, (int) Main.player.getWon());
         ps.setInt(3, (int) Main.player.getLost());
-        ps.setInt(5, Main.player.getpId());
+        ps.setInt(4, Main.player.getpId());
         ps.executeUpdate();
     }
 
