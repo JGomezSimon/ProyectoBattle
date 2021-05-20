@@ -239,10 +239,11 @@ public class BattlePanel extends MainPanel {
                     Main.player.setLost((int) (Main.player.getLost() + 1));
                 }
                 try {
-                    Events.saveBattle();
+                    Events.updatePlayerStatsDB();
+                    Events.saveBattleDB();
                 } catch (SQLException | NullPointerException throwables) {
                     try {
-                        Events.modifyPlayers();
+                        Events.updatePlayerStatsJSON();
                     } catch (IOException ignored) {
                     }
                 }

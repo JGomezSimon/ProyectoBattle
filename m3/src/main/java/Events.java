@@ -72,14 +72,6 @@ public class Events {
     }
 
     public static void importNoDB() {
-        // Import JSON that contains the players
-        JSONParser playerParser = new JSONParser();
-        try (FileReader reader = new FileReader("users.json")) {
-            Object obj = playerParser.parse(reader);
-            JSONArray playerList = (JSONArray) obj;
-            playerList.forEach(emp -> parsePlayerObject((JSONObject) emp));
-        } catch (IOException | ParseException ignored) {
-        }
         // Import JSON that contains the warriors
         JSONParser warriorParser = new JSONParser();
         try (FileReader reader = new FileReader("warriors.json")) {
@@ -96,6 +88,14 @@ public class Events {
             weaponList.forEach(emp -> parseWeaponObject((JSONObject) emp));
         } catch (IOException | ParseException ignored) {
         }
+        // Import JSON that contains the players
+        JSONParser playerParser = new JSONParser();
+        try (FileReader reader = new FileReader("users.json")) {
+            Object obj = playerParser.parse(reader);
+            JSONArray playerList = (JSONArray) obj;
+            playerList.forEach(emp -> parsePlayerObject((JSONObject) emp));
+        } catch (IOException | ParseException ignored) {
+        }
     }
 
     // Parse Player object
@@ -103,16 +103,24 @@ public class Events {
         JSONObject playerObject = (JSONObject) player.get("player");
         String name = (String) playerObject.get("name");
         String password = (String) playerObject.get("password");
+        String warrior_name = (String) playerObject.get("warrior");
         double points = (double) playerObject.get("points");
         double won = (double) playerObject.get("won");
         double lost = (double) playerObject.get("lost");
-        PlayerContainer.playerArrayList.add(new Player(
+        Warrior warrior = null;
+        for (Warrior i : WarriorContainer.warriorArrayList) {
+            if (i.getName().equals(warrior_name)) {
+                warrior = i;
+            }
+        }
+        Player player_cache = new Player(
                 name,
                 password,
                 new BigDecimal(points).floatValue(),
                 new BigDecimal(won).floatValue(),
-                new BigDecimal(lost).floatValue()
-        ));
+                new BigDecimal(lost).floatValue());
+        player_cache.setWarrior(warrior);
+        PlayerContainer.playerArrayList.add(player_cache);
     }
 
     // Parse Warrior object
@@ -165,7 +173,7 @@ public class Events {
         String update = "insert into players(player_id, player_name, passwd, points, wins, losses) values (? , ?, ?, ?, ?, ?)";
         PreparedStatement ps = connection.prepareStatement(update);
 
-        ResultSet rs = stmnt.executeQuery("select player_id from players order by player_id limit 1");
+        ResultSet rs = stmnt.executeQuery("select player_id from players order by player_id desc limit 1");
         if (rs.next()) {
             next_id = rs.getInt(1);
         }
@@ -180,33 +188,6 @@ public class Events {
         ps.executeUpdate();
     }
 
-    // Function to update losses into players
-    public static void setLostDB(int lost) throws SQLException, NullPointerException {
-        String setLosses = "update players set losses = ? where player_id = ?";
-        PreparedStatement ps = connection.prepareStatement(setLosses);
-        ps.setInt(1, lost);
-        ps.setInt(2, Main.player.getpId());
-        ps.executeUpdate();
-    }
-
-    // Function to update wins into player
-    public static void setWonDB(int won) throws SQLException, ClassNotFoundException, NullPointerException {
-        String setWins = "update players set wins = ? where player_id = ?";
-        PreparedStatement ps = connection.prepareStatement(setWins);
-        ps.setInt(1, won);
-        ps.setInt(2, Main.player.getpId());
-        ps.executeUpdate();
-    }
-
-    // Function to update points into players
-    public static void setPointsDB(int points) throws SQLException, NullPointerException {
-        String setPoints = "update players set points = ? where player_id = ?";
-        PreparedStatement ps = connection.prepareStatement(setPoints);
-        ps.setInt(1, points);
-        ps.setInt(2, Main.player.getpId());
-        ps.executeUpdate();
-    }
-
     // Function to update Warrior_id into players
     public static void setWarriorDB() throws SQLException, NullPointerException {
         String setWarrior = "update players set warrior_id = ? where player_id = ?";
@@ -216,25 +197,13 @@ public class Events {
         ps.executeUpdate();
     }
 
-    // Function to reset all stats after changing character
-    public static void resetStats() throws SQLException, NullPointerException {
-        String resetStats = "update players set points = ?, wins = ?, losses = ?, warrior_id = ? where player_id = ?";
-        PreparedStatement ps = connection.prepareStatement(resetStats);
-        ps.setInt(1, 0);
-        ps.setInt(2, 0);
-        ps.setInt(3, 0);
-        ps.setInt(4, 0);
-        ps.setInt(5, Main.player.getpId());
-        ps.executeUpdate();
-    }
-
     // Function to save the most recent battle into the Database
-    public static void saveBattle() throws SQLException, NullPointerException{
+    public static void saveBattleDB() throws SQLException, NullPointerException {
         int next_id = 0;
         Statement stmnt = connection.createStatement();
 
         ResultSet rs = stmnt.executeQuery("select battle_id from battles order by battle_id limit 1");
-        if (rs.next()){
+        if (rs.next()) {
             next_id = rs.getInt(1);
         }
         next_id = next_id + 1;
@@ -242,9 +211,9 @@ public class Events {
         String battleInsert = "insert into battles(battle_id,player_id,warrior_id,warrior_weapon_id,oponent_id,oponent_weapon_id,injuries_caused,injuries_suffered,battle_points) values (?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps = connection.prepareStatement(battleInsert);
 
-        ps.setInt(1,next_id);
-        ps.setInt(2,Main.player.getpId());
-        ps.setInt(3,Main.player.getWarrior().getWaId());
+        ps.setInt(1, next_id);
+        ps.setInt(2, Main.player.getpId());
+        ps.setInt(3, Main.player.getWarrior().getWaId());
         ps.setInt(4, Main.player.warrior.getWeapon().getWeId());
         ps.setInt(5, Main.player.getOpoId());
         ps.setInt(6, Main.player.getWepId());
@@ -254,8 +223,19 @@ public class Events {
         ps.executeUpdate();
     }
 
+    // Function to update all stats in database
+    public static void updatePlayerStatsDB() throws SQLException, NullPointerException {
+        String resetStats = "update players set points = ?, wins = ?, losses = ? where player_id = ?";
+        PreparedStatement ps = connection.prepareStatement(resetStats);
+        ps.setInt(1, (int) Main.player.getPoints());
+        ps.setInt(2, (int) Main.player.getWon());
+        ps.setInt(3, (int) Main.player.getLost());
+        ps.setInt(5, Main.player.getpId());
+        ps.executeUpdate();
+    }
 
-    public static void modifyPlayers() throws IOException {
+    // Function to update all stats in JSON
+    public static void updatePlayerStatsJSON() throws IOException {
         FileWriter file = new FileWriter("users.json");
         file.write("[]");
         file.flush();
@@ -277,6 +257,7 @@ public class Events {
             playerDetails.put("points", player.getPoints());
             playerDetails.put("won", player.getWon());
             playerDetails.put("lost", player.getLost());
+            if (player.getWarrior() != null) playerDetails.put("warrior", player.getWarrior().getName());
             JSONObject playerObject = new JSONObject();
             playerObject.put("player", playerDetails);
             jsonArray.add(playerObject);

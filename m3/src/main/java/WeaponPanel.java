@@ -24,27 +24,27 @@ public class WeaponPanel extends MainPanel {
         // switch to determinate the weapons that each race can choose
         switch (Main.player.getWarrior().getRace_id()) {
             case 1: // Dwarf
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(1).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(2).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(7).getName());
-                comboBox1.addItem(WeaponContainer.weaponArrayList.get(3).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(8).getName());
                 break;
             case 2: // Elf
-                comboBox1.addItem(WeaponContainer.weaponArrayList.get(7).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(0).getName());
-                comboBox1.addItem(WeaponContainer.weaponArrayList.get(3).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(1).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(3).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(4).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(5).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(7).getName());
                 break;
             case 3: // Human
-                comboBox1.addItem(WeaponContainer.weaponArrayList.get(7).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(0).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(1).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(2).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(3).getName());
-                comboBox1.addItem(WeaponContainer.weaponArrayList.get(1).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(4).getName());
                 comboBox1.addItem(WeaponContainer.weaponArrayList.get(6).getName());
+                comboBox1.addItem(WeaponContainer.weaponArrayList.get(7).getName());
         }
 
         // Setup of the bars

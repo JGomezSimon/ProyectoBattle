@@ -6,7 +6,6 @@ import java.util.logging.Logger;
 
 public class Main {
     public static Logger logger = Logger.getLogger(Main.class.getName());
-    public static String resource_root = "src/main/resources";
     public static Player player;
     public static JFrame loginPanel;
     public static JFrame mainPanel;

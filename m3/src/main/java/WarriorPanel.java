@@ -97,11 +97,11 @@ public class WarriorPanel extends MainPanel {
             Main.player.setWon(0);
             Main.player.setPoints(0);
             try {
-                Events.resetStats();
+                Events.updatePlayerStatsDB();
                 Events.setWarriorDB();
             } catch (SQLException | NullPointerException throwables) {
                 try {
-                    Events.modifyPlayers();
+                    Events.updatePlayerStatsJSON();
                 } catch (IOException ignored) {
                 }
             }

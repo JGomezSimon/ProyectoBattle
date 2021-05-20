@@ -2,19 +2,21 @@
   {
     "player": {
       "password": "1234",
-      "lost": 5.0,
-      "won": 3.0,
+      "warrior": "Nedraec Forgeshaper",
+      "lost": 0.0,
+      "won": 0.0,
       "name": "alex",
-      "points": 104.0
+      "points": 0.0
     }
   },
   {
     "player": {
       "password": "1234",
+      "warrior": "Nedraec Forgeshaper",
       "lost": 0.0,
-      "won": 1.0,
-      "name": "pepe",
-      "points": 35.0
+      "won": 0.0,
+      "name": "alex34241\/",
+      "points": 0.0
     }
   }
 ]
