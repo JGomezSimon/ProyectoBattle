@@ -217,8 +217,8 @@ public class Events {
         ps.setInt(4, Main.player.warrior.getWeapon().getWeId());
         ps.setInt(5, Main.player.getOpoId());
         ps.setInt(6, Main.player.getWepId());
-        ps.setInt(7, Main.player.getWarrior().getLife());
-        ps.setInt(8, Main.player.getHp());
+        ps.setInt(7, Main.player.getHp());
+        ps.setInt(8, Main.player.getWarrior().getLife());
         ps.setInt(9, Main.player.warrior.getPoints() + Main.player.warrior.weapon.getPoints());
         ps.executeUpdate();
     }
@@ -227,7 +227,6 @@ public class Events {
     public static void updatePlayerStatsDB() throws SQLException, NullPointerException {
         String resetStats = "update players set points = ?, wins = ?, losses = ? where player_id = ?";
         PreparedStatement ps = connection.prepareStatement(resetStats);
-        System.out.println(Main.player.getpId());
         ps.setInt(1, (int) Main.player.getPoints());
         ps.setInt(2, (int) Main.player.getWon());
         ps.setInt(3, (int) Main.player.getLost());
