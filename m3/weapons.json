@@ -1,0 +1,83 @@
+[
+  {
+    "weapon": {
+      "strength": 3,
+      "name": "Dagger",
+      "speed": 0,
+      "url": "src\/main\/resources\/weapons\/dagger.jpg",
+      "points": 10
+    }
+  },
+  {
+    "weapon": {
+      "strength": 1,
+      "name": "Sword",
+      "speed": 1,
+      "url": "src\/main\/resources\/weapons\/sword.jpg",
+      "points": 10
+    }
+  },
+  {
+    "weapon": {
+      "strength": 3,
+      "name": "Axe",
+      "speed": 0,
+      "url": "src\/main\/resources\/weapons\/axe.png",
+      "points": 10
+    }
+  },
+  {
+    "weapon": {
+      "strength": 2,
+      "name": "TwinSwords",
+      "speed": 2,
+      "url": "src\/main\/resources\/weapons\/twinSwords.jpg",
+      "points": 14
+    }
+  },
+  {
+    "weapon": {
+      "strength": 1,
+      "name": "Scimitar",
+      "speed": 2,
+      "url": "src\/main\/resources\/weapons\/scimitar.jpg",
+      "points": 14
+    }
+  },
+  {
+    "weapon": {
+      "strength": 1,
+      "name": "Bow",
+      "speed": 5,
+      "url": "src\/main\/resources\/weapons\/bow.jpg",
+      "points": 15
+    }
+  },
+  {
+    "weapon": {
+      "strength": 2,
+      "name": "Katana",
+      "speed": 3,
+      "url": "src\/main\/resources\/weapons\/katana.jpg",
+      "points": 18
+    }
+  },
+  {
+    "weapon": {
+      "strength": 0,
+      "name": "Knife",
+      "speed": 4,
+      "url": "src\/main\/resources\/weapons\/knife.jpg",
+      "points": 12
+    }
+  },
+  {
+    "weapon": {
+      "strength": 5,
+      "name": "TwoHandedAxe",
+      "speed": 0,
+      "url": "src\/main\/resources\/weapons\/twoHandedAxe.jpg",
+      "points": 20
+    }
+  }
+]
