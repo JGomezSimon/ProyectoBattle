@@ -96,8 +96,20 @@ local.properties
 # Local History for Visual Studio Code
 .history/
 
-
 ### JetBrains template
-
 .idea/*
 m3/.idea/*
+
+### Maven template
+m3/target/
+m3/pom.xml.tag
+m3/pom.xml.releaseBackup
+m3/pom.xml.versionsBackup
+m3/pom.xml.next
+m3/release.properties
+m3/dependency-reduced-pom.xml
+m3/buildNumber.properties
+m3/.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+m3/.mvn/wrapper/maven-wrapper.jar
+
