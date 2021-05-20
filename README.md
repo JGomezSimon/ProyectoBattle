@@ -101,4 +101,4 @@ $ ./run.sh
 
 - AlexDltg: dltgalex@gmail.com
 - Jaume Gómez Simón: jgomezsimon13@gmail.com
-- Javier Durán de las Morenas:
+- Javier Durán de las Morenas: javidm01@hotmail.com
