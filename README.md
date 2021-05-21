@@ -48,7 +48,7 @@ Clone the git repository `ProyectoBattle` and run the program:
 ```
 $ git clone git://github.com/JGomezSimon/ProyectoBattle.git
 $ cd ProyectoBattle/m3
-$ maven clean compile assembly:single
+$ mvn clean compile assembly:single
 $ java -jar target/ProyectoBattle-*.jar
 ```
 
