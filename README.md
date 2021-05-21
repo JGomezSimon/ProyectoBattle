@@ -10,7 +10,7 @@ characters.
 
 - [Resume](#resume)
 - [Requirements](#requirements)
-- [Installation](#installation)
+- [Compiling](#compiling)
 - [Configuration](#configuration)
 - [Contact](#contact)
 
@@ -38,20 +38,21 @@ following formula:
 
 ### Requirements
 - [java11](https://openjdk.java.net/)
-- [git](https://git-scm.com/downloads)
+- [git(build)](https://git-scm.com/downloads)
+- [maven(build)](https://maven.apache.org/)
 
-### Installation
+### Compiling
 
-Clone the git repository `ProjectBattle` and run the program:
+Clone the git repository `ProyectoBattle` and run the program:
 
 ```
 $ git clone git://github.com/JGomezSimon/ProyectoBattle.git
-$ cd ProyectoBattle
-$ chmod +x run.sh
-$ ./run.sh
+$ cd ProyectoBattle/m3
+$ maven clean compile assembly:single
+$ java -jar target/ProyectoBattle-*.jar
 ```
 
-> NOTE: If you use windows you will have to run -lo from git bash 
+> NOTE: if you use intellij go to settings > editor > gui desiginer, and change 'generate gui into' value to 'java source code'.
 
 ### Configuration
 
